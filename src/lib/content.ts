@@ -50,8 +50,9 @@ export async function getPublicContent(): Promise<{
     };
   } catch (e) {
     console.error("[content] 公開コンテンツの取得に失敗しました:", e instanceof Error ? e.message : e);
-    // 失敗時は短命キャッシュにして、DB復旧後すぐに再取得されるようにする
-    cacheLife({ stale: 0, revalidate: 60, expire: 300 });
+    // 失敗時は短めのプロファイルにして、DB復旧後1分以内に再取得されるようにする
+    // （expire が5分未満だと事前レンダリング不可と判定されビルドが失敗するため 'minutes' を使う）
+    cacheLife("minutes");
     return { activities: [], strengths: [], works: [], settings: EMPTY_SETTINGS };
   }
 }
