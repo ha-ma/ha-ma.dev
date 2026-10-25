@@ -3,7 +3,7 @@
 import { headers } from "next/headers";
 import { env } from "@/lib/env";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { sendInquiryNotification } from "@/lib/mail";
+import { sendInquiryAutoReply, sendInquiryNotification } from "@/lib/mail";
 import { flattenErrors, formDataToObject, inquirySchema } from "@/lib/schemas";
 import { checkContent, checkHoneypot, checkOrigin, clientIpFromHeaders, hashIp, verifyTimestamp, verifyTurnstile } from "@/lib/spam";
 
@@ -127,7 +127,7 @@ export async function submitInquiry(_prev: InquiryState, formData: FormData): Pr
   console.info("[inquiry] saved", saved.id);
   // 9. 通知（失敗しても成功扱い）
   try {
-    await sendInquiryNotification(saved);
+    await Promise.all([sendInquiryNotification(saved), sendInquiryAutoReply(saved)]);
   } catch (e) {
     console.error("[inquiry] notification failed", e);
   }

@@ -43,6 +43,10 @@ export const env = {
       .map((s) => s.trim())
       .filter(Boolean);
   },
+  /** 送信者への自動返信（既定: 有効。AUTO_REPLY=off で無効） */
+  get autoReply() {
+    return (process.env.AUTO_REPLY ?? "on").toLowerCase() !== "off";
+  },
   get formHmacSecret() {
     return required("FORM_HMAC_SECRET");
   },
