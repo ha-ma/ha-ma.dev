@@ -57,8 +57,11 @@ export async function submitInquiry(_prev: InquiryState, formData: FormData): Pr
   // 4. 入力検証
   const parsed = inquirySchema.safeParse(formDataToObject(formData));
   if (!parsed.success) {
-    console.warn("[inquiry] rejected: validation", JSON.stringify(flattenErrors(parsed.error)));
-    return { status: "error", message: "入力内容をご確認ください。", fieldErrors: flattenErrors(parsed.error), values };
+    const fieldErrors = flattenErrors(parsed.error);
+    console.warn("[inquiry] rejected: validation", JSON.stringify(fieldErrors));
+    const labels: Record<string, string> = { name: "お名前", email: "メールアドレス", organization: "会社・組織名", category: "ご相談の種別", message: "ご用件", agree: "プライバシーポリシーへの同意" };
+    const which = Object.keys(fieldErrors).map((k) => labels[k] ?? k).join("・");
+    return { status: "error", message: `入力内容をご確認ください（${which}）。`, fieldErrors, values };
   }
   const { agree: _agree, ...input } = parsed.data;
   void _agree;

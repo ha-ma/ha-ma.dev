@@ -27,7 +27,8 @@ export const inquirySchema = z.object({
   organization: trimmed(100),
   category: z.enum(INQUIRY_CATEGORIES, { message: "ご相談の種別を選択してください" }),
   message: trimmed(2000, 20),
-  agree: z.literal(true, { message: "プライバシーポリシーへの同意が必要です" }),
+  // チェックボックスは "on" で届くので真偽値に変換してから検証する
+  agree: z.preprocess((v) => v === "on" || v === "true" || v === true, z.literal(true, { message: "プライバシーポリシーへの同意が必要です" })),
 });
 export type InquiryInput = z.infer<typeof inquirySchema>;
 
