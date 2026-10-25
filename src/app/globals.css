@@ -1,0 +1,45 @@
+@import "tailwindcss";
+@import "@fontsource-variable/noto-sans-jp";
+@import "@fontsource-variable/inter";
+
+@theme {
+  --color-paper: #f7f6f2;
+  --color-ink: #1f2328;
+  --color-ink-2: #4b5058;
+  --color-ink-3: #6b6f76;
+  --color-ink-4: #8a8e95;
+  --color-line: #d9d6ce;
+  --color-line-2: #e3e0d8;
+  --color-line-3: #eceae4;
+  --color-navy: #1b3a5c;
+  --color-navy-tint: #eef2f6;
+  --color-orange: #e8743b;
+  --color-orange-tint: #fdf0e8;
+  --color-orange-ink: #9a4a1f;
+  --color-red: #b5473c;
+  --color-green: #2e7d6b;
+
+  --font-sans: "Noto Sans JP Variable", "Inter Variable", system-ui, sans-serif;
+  --font-en: "Inter Variable", "Noto Sans JP Variable", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+}
