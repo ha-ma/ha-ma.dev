@@ -33,15 +33,23 @@ export async function submitInquiry(_prev: InquiryState, formData: FormData): Pr
 
   // 1. Origin
   const origin = checkOrigin(h, allowedHosts);
-  if (!origin.ok) return { status: "error", message: GENERIC_ERROR, values };
+  if (!origin.ok) {
+    console.warn("[inquiry] rejected:", origin.reason, "(allowed:", allowedHosts.join(","), ")");
+    return { status: "error", message: GENERIC_ERROR, values };
+  }
 
   // 2. ハニーポット（ボットには成功を装う）
-  const hp = checkHoneypot(formData.get("website") as string | null);
-  if (!hp.ok) return { status: "success" };
+  // フィールド名は自動入力（Chrome・パスワードマネージャ）が反応しないよう無意味な名前にしている
+  const hp = checkHoneypot(formData.get("hp_field_x7") as string | null);
+  if (!hp.ok) {
+    console.warn("[inquiry] rejected: honeypot (silent success)");
+    return { status: "success" };
+  }
 
   // 3. 送信時間
   const ts = verifyTimestamp(env.formHmacSecret, formData.get("form_started_at") as string | null);
   if (!ts.ok) {
+    console.warn("[inquiry] rejected:", ts.reason);
     const msg = ts.reason === "form_expired" ? "フォームの有効期限が切れました。ページを再読み込みして再度お試しください。" : GENERIC_ERROR;
     return { status: "error", message: msg, values };
   }
@@ -49,6 +57,7 @@ export async function submitInquiry(_prev: InquiryState, formData: FormData): Pr
   // 4. 入力検証
   const parsed = inquirySchema.safeParse(formDataToObject(formData));
   if (!parsed.success) {
+    console.warn("[inquiry] rejected: validation", JSON.stringify(flattenErrors(parsed.error)));
     return { status: "error", message: "入力内容をご確認ください。", fieldErrors: flattenErrors(parsed.error), values };
   }
   const { agree: _agree, ...input } = parsed.data;
@@ -62,6 +71,7 @@ export async function submitInquiry(_prev: InquiryState, formData: FormData): Pr
   // 5. 内容ヒューリスティック（該当は spam として保存し、ユーザーには汎用エラー）
   const content = checkContent(input);
   if (!content.ok) {
+    console.warn("[inquiry] rejected: content", content.reason);
     await supabase.from("inquiries").insert({
       ...input,
       status: "spam",
@@ -80,6 +90,7 @@ export async function submitInquiry(_prev: InquiryState, formData: FormData): Pr
   if (r10.error || r1d.error) {
     console.error("[inquiry] rate limit rpc error", r10.error ?? r1d.error);
   } else if (r10.data === false || r1d.data === false) {
+    console.warn("[inquiry] rejected: rate_limit");
     return { status: "error", message: "送信回数の上限に達しました。しばらく時間をおいてから再度お試しください。", values };
   }
 
@@ -110,6 +121,7 @@ export async function submitInquiry(_prev: InquiryState, formData: FormData): Pr
     return { status: "error", message: GENERIC_ERROR, values };
   }
 
+  console.info("[inquiry] saved", saved.id);
   // 9. 通知（失敗しても成功扱い）
   try {
     await sendInquiryNotification(saved);

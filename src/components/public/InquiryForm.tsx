@@ -57,9 +57,10 @@ export function InquiryForm({ formToken, turnstileSiteKey }: { formToken: string
 
       {/* 非表示フィールド */}
       <input type="hidden" name="form_started_at" value={formToken} />
+      {/* ハニーポット: 人には見えず、自動入力も反応しない名前。ボットが埋めたら破棄 */}
       <div className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
-        <label htmlFor={`${uid}-website`}>Website</label>
-        <input id={`${uid}-website`} type="text" name="website" tabIndex={-1} autoComplete="off" defaultValue="" />
+        <label htmlFor={`${uid}-hp`}>この欄は空のままにしてください</label>
+        <input id={`${uid}-hp`} type="text" name="hp_field_x7" tabIndex={-1} autoComplete="new-password" data-lpignore="true" data-1p-ignore="true" defaultValue="" />
       </div>
 
       <div className="grid gap-x-4 gap-y-3.5 md:grid-cols-2">
