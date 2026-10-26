@@ -18,13 +18,14 @@ export const profile = {
       { title: "新しい事業で世の中へ寄与する", body: "新しい事業やサービスをつくり上げ、地域の外にも価値を届ける企業" },
     ],
   },
+  // 案件実績（技術経歴書）に基づく実数: 2016〜2019年 30件 + 2020年〜 14件 + パートナー事業 4件 = 48件
   stats: [
     { value: "11", unit: "年", label: "会社運営" },
     { value: "20", unit: "名", label: "最大組織規模" },
-    { value: "20-30", unit: "", label: "EC構築サイト" },
-    { value: "40", unit: "件", label: "WEBシステム案件" },
+    { value: "48", unit: "件", label: "参画案件" },
+    { value: "30", unit: "件", label: "WEBサイト・EC構築" },
+    { value: "17", unit: "件", label: "WEBシステム・SaaS" },
     { value: "7", unit: "事業", label: "新規事業立ち上げ" },
-    { value: "2", unit: "件", label: "アプリ開発" },
   ],
   skillGroups: [
     { name: "フロントエンド", items: [{ name: "HTML / CSS", level: 3 }, { name: "JavaScript / TypeScript", level: 3 }, { name: "Next.js", level: 3 }, { name: "Gatsby.js", level: 2 }] },

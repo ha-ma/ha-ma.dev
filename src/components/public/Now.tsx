@@ -5,7 +5,7 @@ function ActivityCard({ a, muted }: { a: Activity; muted?: boolean }) {
   return (
     <Card as="li" className={muted ? "flex flex-col gap-2 bg-transparent" : "flex flex-col gap-2.5"}>
       <div className="flex items-start justify-between gap-3">
-        <p className={muted ? "text-[15px] font-bold leading-snug" : "text-base font-bold leading-snug"}>
+        <p className={muted ? "min-w-0 text-[15px] font-bold leading-snug" : "min-w-0 text-base font-bold leading-snug"}>
           {a.url ? (
             <a href={a.url} target="_blank" rel="noopener noreferrer" className="text-ink no-underline hover:text-navy">
               {a.org}
@@ -14,7 +14,11 @@ function ActivityCard({ a, muted }: { a: Activity; muted?: boolean }) {
             a.org
           )}
         </p>
-        {a.role && <Pill>{a.role}</Pill>}
+        {a.role && (
+          <span className="shrink-0">
+            <Pill>{a.role}</Pill>
+          </span>
+        )}
       </div>
       {a.summary && <p className="text-[13px] leading-relaxed text-ink-2">{a.summary}</p>}
       {a.highlights.length > 0 && (

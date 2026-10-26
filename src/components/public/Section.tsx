@@ -34,7 +34,7 @@ export function Pill({ children, tone = "navy" }: { children: ReactNode; tone?: 
   return (
     <span
       className={cn(
-        "inline-block rounded-full px-2.5 py-1 text-xs font-medium leading-snug",
+        "inline-block whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-medium leading-snug",
         tone === "navy" ? "bg-navy-tint text-navy" : "rounded-md bg-orange-tint px-2 py-0.5 text-[11px] text-orange-ink",
       )}
     >
