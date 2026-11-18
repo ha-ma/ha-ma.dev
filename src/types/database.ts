@@ -89,6 +89,91 @@ export type Inquiry = {
   created_at: string;
 }
 
+
+// ---- 日報（フェーズ①） ----
+export const SOURCE_KINDS = ["rss", "gnews", "gnews_en", "page", "note", "yt", "x"] as const;
+export type SourceKind = (typeof SOURCE_KINDS)[number];
+export const DAILY_TAGS = ["協力隊", "観光", "AI", "行政", "根室", "福祉", "教育", "音楽", "EC", "起業"] as const;
+export type DailyTag = (typeof DAILY_TAGS)[number];
+export type ItemStatus = "new" | "scored" | "digest" | "skipped";
+
+export type Source = {
+  id: string;
+  name: string;
+  group_name: string;
+  kind: SourceKind;
+  lang: string;
+  url: string | null;
+  feed: string | null;
+  x_handle: string | null;
+  tags: string[];
+  tier: number;
+  note: string;
+  enabled: boolean;
+  selector: string | null;
+  last_fetched_at: string | null;
+  last_status: string | null;
+  last_error: string | null;
+  fail_count: number;
+  created_at: string;
+  updated_at: string;
+};
+
+export type DailyItem = {
+  id: string;
+  source_id: string;
+  run_date: string;
+  canonical_url: string;
+  url: string;
+  title: string;
+  author: string | null;
+  published_at: string | null;
+  fetched_at: string;
+  excerpt: string;
+  body: string | null;
+  lang: string;
+  score: number | null;
+  score_reason: string | null;
+  tags: string[];
+  cluster_key: string | null;
+  rank: number | null;
+  summary: string | null;
+  angle: string | null;
+  status: ItemStatus;
+};
+
+export type Comment = {
+  id: string;
+  item_id: string;
+  run_date: string;
+  public_text: string | null;
+  private_memo: string | null;
+  tags: string[];
+  podcast_flag: boolean;
+  guard_overridden: string[];
+  published_at: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+export type InterestProfile = { id: number; body: string; created_at: string };
+
+export type DailyRun = {
+  run_date: string;
+  mode: "full" | "degraded";
+  stages: Json;
+  items_collected: number;
+  items_scored: number;
+  digest_count: number;
+  cost_usd: number;
+  mailed_at: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+export type BlockedTerm = { id: number; term: string; kind: "name" | "deal" | "other"; note: string; created_at: string };
+export type DailySetting = { key: string; value: Json; updated_at: string };
+
 type Insertable<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
 export type Database = {
@@ -130,6 +215,48 @@ export type Database = {
         Update: { key?: string; count?: number; window_start?: string };
         Relationships: [];
       };
+      sources: {
+        Row: Source;
+        Insert: Insertable<Source, "lang" | "url" | "feed" | "x_handle" | "tags" | "tier" | "note" | "enabled" | "selector" | "last_fetched_at" | "last_status" | "last_error" | "fail_count" | "created_at" | "updated_at">;
+        Update: Partial<Source>;
+        Relationships: [];
+      };
+      daily_items: {
+        Row: DailyItem;
+        Insert: Insertable<DailyItem, "id" | "author" | "published_at" | "fetched_at" | "excerpt" | "body" | "lang" | "score" | "score_reason" | "tags" | "cluster_key" | "rank" | "summary" | "angle" | "status">;
+        Update: Partial<DailyItem>;
+        Relationships: [{ foreignKeyName: "daily_items_source_id_fkey"; columns: ["source_id"]; isOneToOne: false; referencedRelation: "sources"; referencedColumns: ["id"] }];
+      };
+      comments: {
+        Row: Comment;
+        Insert: Insertable<Comment, "id" | "public_text" | "private_memo" | "tags" | "podcast_flag" | "guard_overridden" | "published_at" | "created_at" | "updated_at">;
+        Update: Partial<Comment>;
+        Relationships: [{ foreignKeyName: "comments_item_id_fkey"; columns: ["item_id"]; isOneToOne: true; referencedRelation: "daily_items"; referencedColumns: ["id"] }];
+      };
+      interest_profile: {
+        Row: InterestProfile;
+        Insert: { body: string; id?: number; created_at?: string };
+        Update: Partial<InterestProfile>;
+        Relationships: [];
+      };
+      daily_runs: {
+        Row: DailyRun;
+        Insert: Insertable<DailyRun, "mode" | "stages" | "items_collected" | "items_scored" | "digest_count" | "cost_usd" | "mailed_at" | "created_at" | "updated_at">;
+        Update: Partial<DailyRun>;
+        Relationships: [];
+      };
+      blocked_terms: {
+        Row: BlockedTerm;
+        Insert: { term: string; kind?: BlockedTerm["kind"]; note?: string; id?: number; created_at?: string };
+        Update: Partial<BlockedTerm>;
+        Relationships: [];
+      };
+      daily_settings: {
+        Row: DailySetting;
+        Insert: { key: string; value: Json; updated_at?: string };
+        Update: Partial<DailySetting>;
+        Relationships: [];
+      };
     };
     Views: Record<string, never>;
     Functions: {
@@ -138,6 +265,10 @@ export type Database = {
         Returns: boolean;
       };
       is_admin: { Args: Record<string, never>; Returns: boolean };
+      daily_public_dates: {
+        Args: { p_limit?: number; p_offset?: number };
+        Returns: { run_date: string; item_count: number; last_updated: string }[];
+      };
     };
     Enums: Record<string, never>;
     CompositeTypes: Record<string, never>;

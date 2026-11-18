@@ -2,6 +2,7 @@ import Link from "next/link";
 import { requireAdmin, TABLE_LABEL, type ContentTable } from "@/lib/admin";
 import { Container, PageHeader } from "@/components/admin/ui";
 import { PurgeButton } from "./PurgeButton";
+import { jstDate } from "@/lib/daily/common";
 
 export default async function Dashboard() {
   const { supabase } = await requireAdmin();
@@ -18,11 +19,23 @@ export default async function Dashboard() {
     ),
     supabase.from("inquiries").select("id", { count: "exact", head: true }).eq("status", "new"),
   ]);
+  const today = jstDate();
+  const [{ count: todayDigest }, { count: todayCommented }] = await Promise.all([
+    supabase.from("daily_items").select("id", { count: "exact", head: true }).eq("run_date", today).eq("status", "digest"),
+    supabase.from("comments").select("id", { count: "exact", head: true }).eq("run_date", today).not("public_text", "is", null),
+  ]);
 
   return (
     <Container>
       <PageHeader title="ダッシュボード" />
-      <div className="grid gap-4 md:grid-cols-4">
+      <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
+        <Link href={`/admin/daily?d=${today}`} className="rounded-[10px] border border-line bg-white p-5 no-underline hover:border-navy">
+          <p className="text-xs font-bold text-ink-3">今日の日報</p>
+          <p className="font-en text-4xl font-bold text-navy">
+            {todayCommented ?? 0}
+            <span className="ml-1 text-sm font-medium text-ink-4">/ {todayDigest ?? 0} コメント済</span>
+          </p>
+        </Link>
         <Link href="/admin/inquiries" className="rounded-[10px] border border-line bg-white p-5 no-underline hover:border-navy">
           <p className="text-xs font-bold text-ink-3">未読の問い合わせ</p>
           <p className="font-en text-4xl font-bold text-orange">{newInq.count ?? 0}</p>

@@ -9,6 +9,7 @@ export default async function Page() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": `${siteUrl}/#person`,
     name: profile.name,
     alternateName: profile.nameEn,
     url: siteUrl,
