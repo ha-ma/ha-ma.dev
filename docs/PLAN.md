@@ -33,3 +33,18 @@
 - 管理画面のログインリンク（`me@ha-ma.dev` 宛）は Resend の受信箱から開く
 - 通知を普段のメールでも受けるなら `MAIL_TO=inquiry@ha-ma.dev,<普段のアドレス>`
 - 将来 Google Workspace 等でメールボックスを持つ場合は MX を切り替え、Resend 側の受信を無効化する
+
+## 日報（フェーズ①）— 2026-11-18
+
+設計書: Claude Docs「ha-ma.dev フェーズ① 日報の土台 設計書 v0.1」／ソース一覧「日報ソースリスト v0.1」（`config/sources.yaml`）。
+
+| 項目 | 決定 |
+| --- | --- |
+| 流れ | 5:30 収集（331ソース）→ 採点（興味プロフィール）→ 上位10件を要約 → 6:00 メール → スマホでコメント → 保存と同時に `/daily/YYYY-MM-DD` に公開 |
+| 実行環境 | Mac mini（launchd、`ops/macmini/`）。X は公式APIが従量制で高いため、自分のXリストをブラウザで読む。Vercel Cron（6:30 JST）は watchdog で、Mac mini の記録がなければ RSS のみで縮退運転 |
+| テーブル | sources / daily_items / comments / interest_profile / daily_runs / blocked_terms / daily_settings（`20261118000000_daily.sql`） |
+| 管理画面 | `/admin/daily`（コメント・音声入力・整文）、`/admin/sources`、`/admin/profile`（興味プロフィール・禁則語・配信設定） |
+| 公開面 | `/daily`、`/daily/[date]`、`/daily/feed.xml`、`/llms.txt`、sitemap、JSON-LD（Blog / BlogPosting / Person @id 共通） |
+| ガード | blocked_terms を保存前に照合して確認、要約プロンプトにも禁則、出力を伏せ字 |
+| 追加の環境変数 | `ANTHROPIC_API_KEY`、`CRON_SECRET`（Vercel）、Mac mini のみ `SUPABASE_SERVICE_ROLE_KEY`・`REVALIDATE_SECRET`・`RESEND_API_KEY`（`.env.daily`） |
+| 関門 | 14日連続でメールが届き、10日以上でコメントが公開されていること |

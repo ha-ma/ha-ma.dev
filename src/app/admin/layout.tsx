@@ -11,11 +11,14 @@ export const metadata: Metadata = {
 
 const nav = [
   { href: "/admin", label: "ダッシュボード" },
+  { href: "/admin/daily", label: "日報" },
   { href: "/admin/activities", label: "現在の活動" },
   { href: "/admin/strengths", label: "得意なこと" },
   { href: "/admin/works", label: "案件" },
   { href: "/admin/settings", label: "サイト設定" },
   { href: "/admin/inquiries", label: "問い合わせ" },
+  { href: "/admin/sources", label: "ソース" },
+  { href: "/admin/profile", label: "興味・設定" },
 ];
 
 async function Header() {

@@ -1,0 +1,3995 @@
+# ha-ma.dev 日報ソースリスト v0.1（2026-11-18）
+# kind: rss | gnews | gnews_en | page | x | note | yt
+# x: Xハンドル。X取得は濵屋のXリスト『日報ソース』経由（Mac mini）。ハンドルは要確認のものを含む
+# verified: この会話で到達確認済み。false は validate-sources で確認する
+version: 0.1
+sources:
+  # ── A. AIラボ公式
+  - id: "anthropic-news"
+    name: "Anthropic News"
+    group: "A. AIラボ公式"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.anthropic.com/news"
+    feed: "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_news.xml"
+    x: "AnthropicAI"
+    tags: ["ai"]
+    tier: 1
+    note: "公式RSSなし。コミュニティ生成フィード（Olshansk/rss-feeds）"
+    verified: true
+  - id: "anthropic-engineering"
+    name: "Anthropic Engineering"
+    group: "A. AIラボ公式"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.anthropic.com/engineering"
+    feed: "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_engineering.xml"
+    x: null
+    tags: ["ai", "dev"]
+    tier: 1
+    note: "エージェント設計・Claude Code運用の一次情報"
+    verified: true
+  - id: "anthropic-research"
+    name: "Anthropic Research"
+    group: "A. AIラボ公式"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.anthropic.com/research"
+    feed: "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_research.xml"
+    x: null
+    tags: ["ai"]
+    tier: 2
+    note: ""
+    verified: true
+  - id: "anthropic-red"
+    name: "Anthropic Red (Frontier Red Team)"
+    group: "A. AIラボ公式"
+    kind: "rss"
+    lang: "en"
+    url: "https://red.anthropic.com"
+    feed: "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_red.xml"
+    x: null
+    tags: ["ai"]
+    tier: 3
+    note: ""
+    verified: true
+  - id: "claude-code-changelog"
+    name: "Claude Code Changelog"
+    group: "A. AIラボ公式"
+    kind: "rss"
+    lang: "en"
+    url: "https://code.claude.com/docs/en/changelog"
+    feed: "https://code.claude.com/docs/en/changelog/rss.xml"
+    x: "claudeai"
+    tags: ["ai", "dev"]
+    tier: 1
+    note: "公式RSS"
+    verified: true
+  - id: "claude-更新"
+    name: "Claude (製品) 更新"
+    group: "A. AIラボ公式"
+    kind: "rss"
+    lang: "en"
+    url: "https://claude.com"
+    feed: "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_claude.xml"
+    x: "claudeai"
+    tags: ["ai"]
+    tier: 2
+    note: "コミュニティ生成"
+    verified: true
+  - id: "anthropic-youtube"
+    name: "Anthropic YouTube"
+    group: "A. AIラボ公式"
+    kind: "yt"
+    lang: "ja"
+    url: "https://www.youtube.com/@anthropic-ai"
+    feed: null
+    x: null
+    tags: ["ai"]
+    tier: 2
+    note: "チャンネルRSSはchannel_idで取得（実装時に解決）"
+    verified: false
+  - id: "openai-news"
+    name: "OpenAI News"
+    group: "A. AIラボ公式"
+    kind: "rss"
+    lang: "en"
+    url: "https://openai.com/news"
+    feed: "https://openai.com/news/rss.xml"
+    x: "OpenAI"
+    tags: ["ai"]
+    tier: 1
+    note: "公式RSS"
+    verified: false
+  - id: "openai-developers"
+    name: "OpenAI Developers"
+    group: "A. AIラボ公式"
+    kind: "x"
+    lang: "en"
+    url: "https://developers.openai.com"
+    feed: null
+    x: "OpenAIDevs"
+    tags: ["ai", "dev"]
+    tier: 1
+    note: "API・Agents SDKの更新"
+    verified: false
+  - id: "openai-academy-blog"
+    name: "OpenAI Academy / Blog (coding)"
+    group: "A. AIラボ公式"
+    kind: "rss"
+    lang: "en"
+    url: "https://openai.com/news/"
+    feed: "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_openai_main.xml"
+    x: null
+    tags: ["ai"]
+    tier: 3
+    note: "コミュニティ生成（重複排除で統合）"
+    verified: true
+  - id: "google-the-keyword"
+    name: "Google The Keyword"
+    group: "A. AIラボ公式"
+    kind: "rss"
+    lang: "en"
+    url: "https://blog.google"
+    feed: "https://blog.google/rss/"
+    x: "Google"
+    tags: ["ai"]
+    tier: 1
+    note: "Google全社ブログ"
+    verified: false
+  - id: "google-japan-blog"
+    name: "Google Japan Blog"
+    group: "A. AIラボ公式"
+    kind: "rss"
+    lang: "ja"
+    url: "https://japan.googleblog.com"
+    feed: "https://japan.googleblog.com/feeds/posts/default"
+    x: null
+    tags: ["ai"]
+    tier: 1
+    note: "日本語公式"
+    verified: false
+  - id: "google-deepmind-blog"
+    name: "Google DeepMind Blog"
+    group: "A. AIラボ公式"
+    kind: "rss"
+    lang: "en"
+    url: "https://deepmind.google/blog"
+    feed: "https://deepmind.google/blog/rss.xml"
+    x: "GoogleDeepMind"
+    tags: ["ai"]
+    tier: 1
+    note: "Geminiの一次情報"
+    verified: true
+  - id: "google-ai"
+    name: "Google AI (Research/Developers)"
+    group: "A. AIラボ公式"
+    kind: "rss"
+    lang: "en"
+    url: "https://blog.google/technology/ai/"
+    feed: "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_google_ai.xml"
+    x: "GoogleAI"
+    tags: ["ai"]
+    tier: 2
+    note: ""
+    verified: true
+  - id: "google-developers-blog"
+    name: "Google Developers Blog"
+    group: "A. AIラボ公式"
+    kind: "rss"
+    lang: "en"
+    url: "https://developers.googleblog.com"
+    feed: "https://developers.googleblog.com/feeds/posts/default"
+    x: "googledevs"
+    tags: ["ai", "dev"]
+    tier: 2
+    note: "Gemini API・AI Studio"
+    verified: false
+  - id: "google-cloud-blog"
+    name: "Google Cloud Blog (AI & ML)"
+    group: "A. AIラボ公式"
+    kind: "rss"
+    lang: "en"
+    url: "https://cloud.google.com/blog/products/ai-machine-learning"
+    feed: "https://cloudblog.withgoogle.com/products/ai-machine-learning/rss/"
+    x: "googlecloud"
+    tags: ["ai", "dev"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "google-for-startups-japan"
+    name: "Google for Startups Japan"
+    group: "A. AIラボ公式"
+    kind: "x"
+    lang: "ja"
+    url: "https://startup.google.com/intl/ja/"
+    feed: null
+    x: "GoogleStartupJP"
+    tags: ["startup"]
+    tier: 3
+    note: "公募・プログラム情報"
+    verified: false
+  - id: "meta-ai"
+    name: "（参考）Meta AI"
+    group: "A. AIラボ公式"
+    kind: "rss"
+    lang: "en"
+    url: "https://ai.meta.com/blog/"
+    feed: "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_meta_ai.xml"
+    x: "AIatMeta"
+    tags: ["ai"]
+    tier: 3
+    note: "Llama系。優先度低"
+    verified: true
+  - id: "mistral"
+    name: "（参考）Mistral"
+    group: "A. AIラボ公式"
+    kind: "rss"
+    lang: "en"
+    url: "https://mistral.ai/news"
+    feed: "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_mistral.xml"
+    x: "MistralAI"
+    tags: ["ai"]
+    tier: 3
+    note: ""
+    verified: true
+  # ── B. AIラボ主要人物
+  - id: "sam-altman"
+    name: "Sam Altman（OpenAI CEO）"
+    group: "B. AIラボ主要人物"
+    kind: "x"
+    lang: "en"
+    url: "https://blog.samaltman.com"
+    feed: "https://blog.samaltman.com/posts.atom"
+    x: "sama"
+    tags: ["ai"]
+    tier: 1
+    note: "ブログはAtomあり"
+    verified: false
+  - id: "greg-brockman"
+    name: "Greg Brockman（OpenAI President）"
+    group: "B. AIラボ主要人物"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "gdb"
+    tags: ["ai"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "kevin-weil"
+    name: "Kevin Weil（OpenAI CPO）"
+    group: "B. AIラボ主要人物"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "kevinweil"
+    tags: ["ai"]
+    tier: 2
+    note: "製品方針"
+    verified: false
+  - id: "noam-brown"
+    name: "Noam Brown（OpenAI）"
+    group: "B. AIラボ主要人物"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "polynoamial"
+    tags: ["ai"]
+    tier: 3
+    note: "推論モデル"
+    verified: false
+  - id: "dario-amodei"
+    name: "Dario Amodei（Anthropic CEO）"
+    group: "B. AIラボ主要人物"
+    kind: "page"
+    lang: "en"
+    url: "https://www.darioamodei.com"
+    feed: null
+    x: null
+    tags: ["ai"]
+    tier: 1
+    note: "エッセイ（Machines of Loving Grace等）。更新は稀、ページ差分監視"
+    verified: false
+  - id: "jack-clark"
+    name: "Jack Clark（Anthropic共同創業者）"
+    group: "B. AIラボ主要人物"
+    kind: "rss"
+    lang: "en"
+    url: "https://importai.substack.com"
+    feed: "https://importai.substack.com/feed"
+    x: "jackclarkSF"
+    tags: ["ai"]
+    tier: 1
+    note: "Import AI ニュースレター（週刊）"
+    verified: false
+  - id: "amanda-askell"
+    name: "Amanda Askell（Anthropic）"
+    group: "B. AIラボ主要人物"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "AmandaAskell"
+    tags: ["ai"]
+    tier: 2
+    note: "Claudeの性格・倫理設計"
+    verified: false
+  - id: "chris-olah"
+    name: "Chris Olah（Anthropic）"
+    group: "B. AIラボ主要人物"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "ch402"
+    tags: ["ai"]
+    tier: 3
+    note: "解釈可能性"
+    verified: false
+  - id: "boris-cherny"
+    name: "Boris Cherny（Claude Code作者）"
+    group: "B. AIラボ主要人物"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "bcherny"
+    tags: ["ai", "dev"]
+    tier: 1
+    note: "Claude Codeの使い方・新機能を最速で出す"
+    verified: false
+  - id: "alex-albert"
+    name: "Alex Albert（Anthropic DevRel）"
+    group: "B. AIラボ主要人物"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "alexalbert__"
+    tags: ["ai", "dev"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "mike-krieger"
+    name: "Mike Krieger（Anthropic CPO）"
+    group: "B. AIラボ主要人物"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "mikeyk"
+    tags: ["ai"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "demis-hassabis"
+    name: "Demis Hassabis（Google DeepMind CEO）"
+    group: "B. AIラボ主要人物"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "demishassabis"
+    tags: ["ai"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "sundar-pichai"
+    name: "Sundar Pichai（Google CEO）"
+    group: "B. AIラボ主要人物"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "sundarpichai"
+    tags: ["ai"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "jeff-dean"
+    name: "Jeff Dean（Google）"
+    group: "B. AIラボ主要人物"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "JeffDean"
+    tags: ["ai"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "logan-kilpatrick"
+    name: "Logan Kilpatrick（Google AI Studio）"
+    group: "B. AIラボ主要人物"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "OfficialLoganK"
+    tags: ["ai", "dev"]
+    tier: 1
+    note: "Gemini APIの更新を最速で出す"
+    verified: false
+  - id: "josh-woodward"
+    name: "Josh Woodward（Google Labs / Gemini app）"
+    group: "B. AIラボ主要人物"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "joshwoodward"
+    tags: ["ai"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "oriol-vinyals"
+    name: "Oriol Vinyals（DeepMind）"
+    group: "B. AIラボ主要人物"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "OriolVinyalsML"
+    tags: ["ai"]
+    tier: 3
+    note: ""
+    verified: false
+  # ── C. 著名VC（海外）
+  - id: "a16z"
+    name: "a16z（Andreessen Horowitz）"
+    group: "C. 著名VC（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://a16z.com"
+    feed: "https://a16z.com/feed/"
+    x: "a16z"
+    tags: ["vc", "startup"]
+    tier: 1
+    note: "記事・ポッドキャスト"
+    verified: false
+  - id: "marc-andreessen"
+    name: "Marc Andreessen"
+    group: "C. 著名VC（海外）"
+    kind: "x"
+    lang: "en"
+    url: "https://pmarca.substack.com"
+    feed: "https://pmarca.substack.com/feed"
+    x: "pmarca"
+    tags: ["vc"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "ben-horowitz"
+    name: "Ben Horowitz"
+    group: "C. 著名VC（海外）"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "bhorowitz"
+    tags: ["vc"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "y-combinator"
+    name: "Y Combinator（Blog / Library）"
+    group: "C. 著名VC（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.ycombinator.com/blog"
+    feed: "https://www.ycombinator.com/blog/rss"
+    x: "ycombinator"
+    tags: ["vc", "startup"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "paul-graham-essays"
+    name: "Paul Graham Essays"
+    group: "C. 著名VC（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://paulgraham.com/articles.html"
+    feed: "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_paulgraham.xml"
+    x: "paulg"
+    tags: ["startup"]
+    tier: 1
+    note: "エッセイ（コミュニティ生成RSS）"
+    verified: true
+  - id: "garry-tan"
+    name: "Garry Tan（YC CEO）"
+    group: "C. 著名VC（海外）"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "garrytan"
+    tags: ["vc", "startup"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "sequoia-capital"
+    name: "Sequoia Capital"
+    group: "C. 著名VC（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.sequoiacap.com/stories/"
+    feed: "https://www.sequoiacap.com/feed/"
+    x: "sequoia"
+    tags: ["vc"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "benchmark-bill-gurley"
+    name: "Benchmark / Bill Gurley"
+    group: "C. 著名VC（海外）"
+    kind: "x"
+    lang: "en"
+    url: "https://abovethecrowd.com"
+    feed: "https://abovethecrowd.com/feed/"
+    x: "bgurley"
+    tags: ["vc"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "elad-gil"
+    name: "Elad Gil"
+    group: "C. 著名VC（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://blog.eladgil.com"
+    feed: "https://blog.eladgil.com/feed"
+    x: "eladgil"
+    tags: ["vc", "ai"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "sarah-guo"
+    name: "Sarah Guo（Conviction / No Priors）"
+    group: "C. 著名VC（海外）"
+    kind: "x"
+    lang: "en"
+    url: "https://www.conviction.com"
+    feed: null
+    x: "saranormous"
+    tags: ["vc", "ai"]
+    tier: 2
+    note: "No Priors ポッドキャスト"
+    verified: false
+  - id: "lenny-rachitsky"
+    name: "Lenny Rachitsky（Lenny's Newsletter）"
+    group: "C. 著名VC（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.lennysnewsletter.com"
+    feed: "https://www.lennysnewsletter.com/feed"
+    x: "lennysan"
+    tags: ["product", "startup"]
+    tier: 1
+    note: "プロダクト・成長。Substack"
+    verified: false
+  - id: "ben-thompson"
+    name: "Ben Thompson（Stratechery）"
+    group: "C. 著名VC（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://stratechery.com"
+    feed: "https://stratechery.com/feed/"
+    x: "benthompson"
+    tags: ["strategy"]
+    tier: 1
+    note: "有料。無料記事のみ要約"
+    verified: false
+  - id: "packy-mccormick"
+    name: "Packy McCormick（Not Boring）"
+    group: "C. 著名VC（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.notboring.co"
+    feed: "https://www.notboring.co/feed"
+    x: "packyM"
+    tags: ["startup"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "tomasz-tunguz"
+    name: "Tomasz Tunguz"
+    group: "C. 著名VC（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://tomtunguz.com"
+    feed: "https://tomtunguz.com/index.xml"
+    x: "ttunguz"
+    tags: ["vc", "saas"]
+    tier: 2
+    note: "SaaS指標"
+    verified: false
+  - id: "harry-stebbings"
+    name: "Harry Stebbings（20VC）"
+    group: "C. 著名VC（海外）"
+    kind: "x"
+    lang: "en"
+    url: "https://www.thetwentyminutevc.com"
+    feed: null
+    x: "HarryStebbings"
+    tags: ["vc"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "first-round-review"
+    name: "First Round Review"
+    group: "C. 著名VC（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://review.firstround.com"
+    feed: "https://review.firstround.com/feed.xml"
+    x: "firstround"
+    tags: ["startup"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "jason-lemkin"
+    name: "Jason Lemkin（SaaStr）"
+    group: "C. 著名VC（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.saastr.com"
+    feed: "https://www.saastr.com/feed/"
+    x: "jasonlk"
+    tags: ["saas"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "patrick-o-shaughnessy"
+    name: "Patrick O'Shaughnessy（Invest Like the Best）"
+    group: "C. 著名VC（海外）"
+    kind: "x"
+    lang: "en"
+    url: "https://www.joincolossus.com"
+    feed: null
+    x: "patrick_oshag"
+    tags: ["vc"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "dwarkesh-patel"
+    name: "Dwarkesh Patel"
+    group: "C. 著名VC（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.dwarkesh.com"
+    feed: "https://www.dwarkesh.com/feed"
+    x: "dwarkesh_sp"
+    tags: ["ai"]
+    tier: 2
+    note: "AI長編インタビュー。ラボ関係者が揃ってフォロー"
+    verified: false
+  - id: "nat-friedman"
+    name: "Nat Friedman"
+    group: "C. 著名VC（海外）"
+    kind: "x"
+    lang: "en"
+    url: "https://nat.org"
+    feed: null
+    x: "natfriedman"
+    tags: ["ai", "vc"]
+    tier: 3
+    note: ""
+    verified: false
+  # ── D. VC・投資家（国内）
+  - id: "coral-capital"
+    name: "Coral Capital（Coral Insights）"
+    group: "D. VC・投資家（国内）"
+    kind: "rss"
+    lang: "ja"
+    url: "https://coralcap.co/insights/"
+    feed: "https://coralcap.co/feed/"
+    x: "coralcap"
+    tags: ["vc", "startup"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "james-riney"
+    name: "James Riney（Coral Capital）"
+    group: "D. VC・投資家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "james_riney"
+    tags: ["vc"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "anri-佐俣アンリ"
+    name: "ANRI / 佐俣アンリ"
+    group: "D. VC・投資家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: "https://anri.vc"
+    feed: null
+    x: "anrit"
+    tags: ["vc"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "all-star-saas-fund"
+    name: "ALL STAR SAAS FUND（ブログ）"
+    group: "D. VC・投資家（国内）"
+    kind: "rss"
+    lang: "ja"
+    url: "https://blog.allstarsaas.com"
+    feed: null
+    x: "allstarsaasfund"
+    tags: ["saas", "vc"]
+    tier: 1
+    note: "RSS要確認"
+    verified: false
+  - id: "前田ヒロ"
+    name: "前田ヒロ（ALL STAR SAAS FUND）"
+    group: "D. VC・投資家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: "https://hiromaeda.com"
+    feed: "https://hiromaeda.com/feed/"
+    x: "hiromaeda"
+    tags: ["saas", "vc"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "湊雅之"
+    name: "湊雅之（SaaS/AIスタートアップ論）"
+    group: "D. VC・投資家（国内）"
+    kind: "note"
+    lang: "ja"
+    url: "https://note.com/minatonote"
+    feed: "https://note.com/minatonote/rss"
+    x: "masayuki_minato"
+    tags: ["saas"]
+    tier: 2
+    note: "noteのID要確認"
+    verified: false
+  - id: "村上誠典"
+    name: "村上誠典（シニフィアン）"
+    group: "D. VC・投資家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: "https://signifiant.jp/style/"
+    feed: null
+    x: "sign_murakami"
+    tags: ["startup"]
+    tier: 2
+    note: "Signifiant Style"
+    verified: false
+  - id: "高宮慎一"
+    name: "高宮慎一（グロービス・キャピタル）"
+    group: "D. VC・投資家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "s_takamiya"
+    tags: ["vc"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "朝倉祐介"
+    name: "朝倉祐介（アニマルスピリッツ）"
+    group: "D. VC・投資家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "yusuke_asakura"
+    tags: ["startup"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "千葉功太郎"
+    name: "千葉功太郎（DRONE FUND / 千葉道場）"
+    group: "D. VC・投資家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "chibakotaro"
+    tags: ["vc"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "倉林陽"
+    name: "倉林陽（DNX Ventures）"
+    group: "D. VC・投資家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "akira_kurabayashi"
+    tags: ["vc", "saas"]
+    tier: 3
+    note: "ハンドル要確認"
+    verified: false
+  - id: "田島聡一"
+    name: "田島聡一（ジェネシア・ベンチャーズ）"
+    group: "D. VC・投資家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "soichi_tajima"
+    tags: ["vc"]
+    tier: 3
+    note: "ハンドル要確認"
+    verified: false
+  - id: "本間真彦"
+    name: "本間真彦（インキュベイトファンド）"
+    group: "D. VC・投資家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: null
+    tags: ["vc"]
+    tier: 3
+    note: "ハンドル要確認"
+    verified: false
+  - id: "startup-hokkaido"
+    name: "STARTUP HOKKAIDO"
+    group: "D. VC・投資家（国内）"
+    kind: "rss"
+    lang: "ja"
+    url: "https://startup-hokkaido.com"
+    feed: null
+    x: "STARTUP_HKD"
+    tags: ["hokkaido", "startup"]
+    tier: 1
+    note: "新着・公募。RSS要確認→ページ差分"
+    verified: false
+  - id: "北海道ベンチャ-キャピタル"
+    name: "北海道ベンチャーキャピタル"
+    group: "D. VC・投資家（国内）"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.hokkaido-vc.com"
+    feed: null
+    x: null
+    tags: ["hokkaido", "vc"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "さっぽろ産業振興財団-startup-city-sapporo"
+    name: "さっぽろ産業振興財団 / STARTUP CITY SAPPORO"
+    group: "D. VC・投資家（国内）"
+    kind: "page"
+    lang: "ja"
+    url: "https://startup-city-sapporo.com"
+    feed: null
+    x: "StartupSapporo"
+    tags: ["hokkaido", "startup"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "nomaps"
+    name: "NoMaps（札幌）"
+    group: "D. VC・投資家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: "https://no-maps.jp"
+    feed: null
+    x: "nomaps_jp"
+    tags: ["hokkaido", "startup"]
+    tier: 2
+    note: ""
+    verified: false
+  # ── E. 起業家・経営者（海外）
+  - id: "andrej-karpathy"
+    name: "Andrej Karpathy"
+    group: "E. 起業家・経営者（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://karpathy.bearblog.dev"
+    feed: "https://karpathy.bearblog.dev/feed/"
+    x: "karpathy"
+    tags: ["ai", "dev"]
+    tier: 1
+    note: "YouTube講義も"
+    verified: false
+  - id: "simon-willison"
+    name: "Simon Willison"
+    group: "E. 起業家・経営者（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://simonwillison.net"
+    feed: "https://simonwillison.net/atom/everything/"
+    x: "simonw"
+    tags: ["ai", "dev"]
+    tier: 1
+    note: "LLM実務の最重要ブログ。毎日更新"
+    verified: false
+  - id: "ethan-mollick"
+    name: "Ethan Mollick（One Useful Thing）"
+    group: "E. 起業家・経営者（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.oneusefulthing.org"
+    feed: "https://www.oneusefulthing.org/feed"
+    x: "emollick"
+    tags: ["ai", "education"]
+    tier: 1
+    note: "AI×教育・仕事。Substack"
+    verified: false
+  - id: "andrew-ng-the-batch"
+    name: "Andrew Ng / The Batch"
+    group: "E. 起業家・経営者（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.deeplearning.ai/the-batch/"
+    feed: "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_the_batch.xml"
+    x: "AndrewYNg"
+    tags: ["ai", "education"]
+    tier: 1
+    note: "週刊"
+    verified: true
+  - id: "swyx-latent-space"
+    name: "swyx / Latent Space"
+    group: "E. 起業家・経営者（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.latent.space"
+    feed: "https://www.latent.space/feed"
+    x: "swyx"
+    tags: ["ai", "dev"]
+    tier: 1
+    note: "AIエンジニア向け"
+    verified: false
+  - id: "nathan-lambert"
+    name: "Nathan Lambert（Interconnects）"
+    group: "E. 起業家・経営者（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.interconnects.ai"
+    feed: "https://www.interconnects.ai/feed"
+    x: "natolambert"
+    tags: ["ai"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "sebastian-raschka"
+    name: "Sebastian Raschka"
+    group: "E. 起業家・経営者（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://magazine.sebastianraschka.com"
+    feed: "https://magazine.sebastianraschka.com/feed"
+    x: "rasbt"
+    tags: ["ai"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "hamel-husain"
+    name: "Hamel Husain"
+    group: "E. 起業家・経営者（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://hamel.dev"
+    feed: "https://hamel.dev/index.xml"
+    x: "HamelHusain"
+    tags: ["ai", "dev"]
+    tier: 2
+    note: "評価・運用"
+    verified: true
+  - id: "jason-liu"
+    name: "Jason Liu"
+    group: "E. 起業家・経営者（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://jxnl.co"
+    feed: null
+    x: "jxnlco"
+    tags: ["ai", "dev"]
+    tier: 3
+    note: "RAG・構造化出力"
+    verified: false
+  - id: "chip-huyen"
+    name: "Chip Huyen"
+    group: "E. 起業家・経営者（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://huyenchip.com"
+    feed: "https://huyenchip.com/feed.xml"
+    x: "chipro"
+    tags: ["ai"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "lilian-weng"
+    name: "Lilian Weng"
+    group: "E. 起業家・経営者（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://lilianweng.github.io"
+    feed: "https://lilianweng.github.io/index.xml"
+    x: "lilianweng"
+    tags: ["ai"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "jim-fan"
+    name: "Jim Fan（NVIDIA）"
+    group: "E. 起業家・経営者（海外）"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "DrJimFan"
+    tags: ["ai"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "yann-lecun"
+    name: "Yann LeCun"
+    group: "E. 起業家・経営者（海外）"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "ylecun"
+    tags: ["ai"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "fei-fei-li"
+    name: "Fei-Fei Li"
+    group: "E. 起業家・経営者（海外）"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "drfeifei"
+    tags: ["ai"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "guillermo-rauch"
+    name: "Guillermo Rauch（Vercel）"
+    group: "E. 起業家・経営者（海外）"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "rauchg"
+    tags: ["dev"]
+    tier: 1
+    note: "ha-ma.devのスタック"
+    verified: false
+  - id: "vercel-blog-changelog"
+    name: "Vercel Blog / Changelog"
+    group: "E. 起業家・経営者（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://vercel.com/blog"
+    feed: "https://vercel.com/atom"
+    x: "vercel"
+    tags: ["dev"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "next-js-blog"
+    name: "Next.js Blog"
+    group: "E. 起業家・経営者（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://nextjs.org/blog"
+    feed: "https://nextjs.org/feed.xml"
+    x: "nextjs"
+    tags: ["dev"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "paul-copplestone-supabase"
+    name: "Paul Copplestone / Supabase"
+    group: "E. 起業家・経営者（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://supabase.com/blog"
+    feed: "https://supabase.com/rss.xml"
+    x: "kiwicopple"
+    tags: ["dev"]
+    tier: 1
+    note: ""
+    verified: true
+  - id: "tobi-l-tke"
+    name: "Tobi Lütke（Shopify CEO）"
+    group: "E. 起業家・経営者（海外）"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "tobi"
+    tags: ["ec"]
+    tier: 1
+    note: "EC×AI"
+    verified: false
+  - id: "harley-finkelstein"
+    name: "Harley Finkelstein（Shopify President）"
+    group: "E. 起業家・経営者（海外）"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "harleyf"
+    tags: ["ec"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "shopify-changelog-editions"
+    name: "Shopify Changelog / Editions"
+    group: "E. 起業家・経営者（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://changelog.shopify.com"
+    feed: "https://changelog.shopify.com/feed"
+    x: "ShopifyDevs"
+    tags: ["ec", "dev"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "brian-chesky"
+    name: "Brian Chesky（Airbnb）"
+    group: "E. 起業家・経営者（海外）"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "bchesky"
+    tags: ["tourism"]
+    tier: 2
+    note: "体験・観光×プロダクト"
+    verified: false
+  - id: "patrick-collison"
+    name: "Patrick Collison（Stripe）"
+    group: "E. 起業家・経営者（海外）"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "patrickc"
+    tags: ["startup"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "naval-ravikant"
+    name: "Naval Ravikant"
+    group: "E. 起業家・経営者（海外）"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "naval"
+    tags: ["startup"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "satya-nadella"
+    name: "Satya Nadella"
+    group: "E. 起業家・経営者（海外）"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "satyanadella"
+    tags: ["ai"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "aaron-levie"
+    name: "Aaron Levie（Box）"
+    group: "E. 起業家・経営者（海外）"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "levie"
+    tags: ["saas", "ai"]
+    tier: 2
+    note: "エージェント×SaaS論"
+    verified: false
+  - id: "dharmesh-shah"
+    name: "Dharmesh Shah（HubSpot）"
+    group: "E. 起業家・経営者（海外）"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "dharmesh"
+    tags: ["saas", "ai"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "clem-delangue"
+    name: "Clem Delangue（Hugging Face）"
+    group: "E. 起業家・経営者（海外）"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "ClementDelangue"
+    tags: ["ai"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "amjad-masad"
+    name: "Amjad Masad（Replit）"
+    group: "E. 起業家・経営者（海外）"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "amasad"
+    tags: ["ai", "dev"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "aravind-srinivas"
+    name: "Aravind Srinivas（Perplexity）"
+    group: "E. 起業家・経営者（海外）"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "AravSrinivas"
+    tags: ["ai"]
+    tier: 2
+    note: "AI検索＝発信ハブの前提環境"
+    verified: false
+  - id: "dan-shipper"
+    name: "Dan Shipper（Every）"
+    group: "E. 起業家・経営者（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://every.to"
+    feed: null
+    x: "danshipper"
+    tags: ["ai"]
+    tier: 3
+    note: "RSS要確認"
+    verified: false
+  - id: "casey-newton"
+    name: "Casey Newton（Platformer）"
+    group: "E. 起業家・経営者（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.platformer.news"
+    feed: null
+    x: "CaseyNewton"
+    tags: ["ai"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "dylan-patel"
+    name: "Dylan Patel（SemiAnalysis）"
+    group: "E. 起業家・経営者（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://semianalysis.com"
+    feed: "https://semianalysis.com/feed/"
+    x: "dylan522p"
+    tags: ["ai"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "zvi-mowshowitz"
+    name: "Zvi Mowshowitz"
+    group: "E. 起業家・経営者（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://thezvi.substack.com"
+    feed: "https://thezvi.substack.com/feed"
+    x: "TheZvi"
+    tags: ["ai"]
+    tier: 3
+    note: "週刊AIまとめ（長文）"
+    verified: false
+  - id: "tyler-cowen"
+    name: "Tyler Cowen（Marginal Revolution）"
+    group: "E. 起業家・経営者（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://marginalrevolution.com"
+    feed: "https://marginalrevolution.com/feed"
+    x: "tylercowen"
+    tags: ["economics"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "lex-fridman"
+    name: "Lex Fridman"
+    group: "E. 起業家・経営者（海外）"
+    kind: "yt"
+    lang: "en"
+    url: "https://lexfridman.com/podcast/"
+    feed: "https://lexfridman.com/feed/podcast/"
+    x: "lexfridman"
+    tags: ["ai"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "hacker-news"
+    name: "Hacker News（フロントページ）"
+    group: "E. 起業家・経営者（海外）"
+    kind: "rss"
+    lang: "en"
+    url: "https://news.ycombinator.com"
+    feed: "https://hnrss.org/frontpage?points=150"
+    x: null
+    tags: ["dev", "ai"]
+    tier: 1
+    note: "150pt以上のみ"
+    verified: false
+  # ── F. 起業家・AI実務家（国内）
+  - id: "深津貴之"
+    name: "深津貴之（THE GUILD）"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "note"
+    lang: "ja"
+    url: "https://note.com/fladdict"
+    feed: "https://note.com/fladdict/rss"
+    x: "fladdict"
+    tags: ["ai", "product"]
+    tier: 1
+    note: "noteCXO。生成AI活用の国内最重要発信者"
+    verified: false
+  - id: "落合陽一"
+    name: "落合陽一"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "note"
+    lang: "ja"
+    url: "https://note.com/ochyai"
+    feed: "https://note.com/ochyai/rss"
+    x: "ochyai"
+    tags: ["ai", "art"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "安野貴博"
+    name: "安野貴博"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "note"
+    lang: "ja"
+    url: "https://note.com/takahiroanno"
+    feed: "https://note.com/takahiroanno/rss"
+    x: "takahiroanno"
+    tags: ["ai", "gov"]
+    tier: 1
+    note: "AI×行政・デジタル民主主義"
+    verified: false
+  - id: "けんすう"
+    name: "けんすう（古川健介）"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "note"
+    lang: "ja"
+    url: "https://note.com/kensuu"
+    feed: "https://note.com/kensuu/rss"
+    x: "kensuu"
+    tags: ["startup", "product"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "家入一真"
+    name: "家入一真"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "hbkr"
+    tags: ["startup", "local"]
+    tier: 2
+    note: "地方×スタートアップ"
+    verified: false
+  - id: "尾原和啓"
+    name: "尾原和啓"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "note"
+    lang: "ja"
+    url: "https://note.com/kazobara"
+    feed: "https://note.com/kazobara/rss"
+    x: "kazobara"
+    tags: ["ai", "strategy"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "清水亮"
+    name: "清水亮（shi3z）"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "note"
+    lang: "ja"
+    url: "https://note.com/shi3zblog"
+    feed: "https://note.com/shi3zblog/rss"
+    x: "shi3z"
+    tags: ["ai", "dev"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "伊藤穰一"
+    name: "伊藤穰一（Joi Ito）"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "rss"
+    lang: "ja"
+    url: "https://joi.ito.com"
+    feed: "https://joi.ito.com/jp/feed/"
+    x: "Joi"
+    tags: ["ai", "web3"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "孫泰蔵"
+    name: "孫泰蔵"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "TaizoSon"
+    tags: ["startup", "education"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "梶谷健人"
+    name: "梶谷健人"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "note"
+    lang: "ja"
+    url: "https://note.com/kajiken0630"
+    feed: "https://note.com/kajiken0630/rss"
+    x: "kajikent"
+    tags: ["ai", "product"]
+    tier: 1
+    note: "noteID要確認"
+    verified: false
+  - id: "チャエン"
+    name: "チャエン（Digirise）"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "masahirochaen"
+    tags: ["ai"]
+    tier: 2
+    note: "AIニュース速報系"
+    verified: false
+  - id: "元木大介"
+    name: "元木大介（KandaQuantum）"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "ai_syacho"
+    tags: ["ai", "dev"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "池田朋弘"
+    name: "池田朋弘（Workstyle Evolution）"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: "https://note.com/ikedatomohiro"
+    feed: "https://note.com/ikedatomohiro/rss"
+    x: "pop_ikeda"
+    tags: ["ai", "business"]
+    tier: 1
+    note: "中小企業の生成AI活用"
+    verified: false
+  - id: "keito"
+    name: "KEITO（AI×副業/業務）"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "keitowebai"
+    tags: ["ai"]
+    tier: 3
+    note: "ハンドル要確認"
+    verified: false
+  - id: "福島良典"
+    name: "福島良典（LayerX CEO）"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "fukkyy"
+    tags: ["ai", "saas", "gov"]
+    tier: 1
+    note: "AI×バックオフィス・行政"
+    verified: false
+  - id: "松本勇気"
+    name: "松本勇気（LayerX CTO）"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "y_matsuwitter"
+    tags: ["ai", "dev"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "中島聡"
+    name: "中島聡（Life is beautiful）"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.mag2.com/m/0001323030"
+    feed: null
+    x: "snakajima"
+    tags: ["ai", "dev"]
+    tier: 2
+    note: "メルマガ有料。Xのみ対象"
+    verified: false
+  - id: "及川卓也"
+    name: "及川卓也（Tably）"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "takoratta"
+    tags: ["product", "dev"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "宮田昇始"
+    name: "宮田昇始（Nstock / 元SmartHR）"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "note"
+    lang: "ja"
+    url: "https://note.com/miyasho88"
+    feed: "https://note.com/miyasho88/rss"
+    x: "miyasho88"
+    tags: ["saas", "startup"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "佐-木大輔"
+    name: "佐々木大輔（freee）"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "sasakidaisuke"
+    tags: ["saas"]
+    tier: 3
+    note: "ハンドル要確認"
+    verified: false
+  - id: "辻庸介"
+    name: "辻庸介（マネーフォワード）"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "yosuketsuji"
+    tags: ["saas"]
+    tier: 3
+    note: "ハンドル要確認"
+    verified: false
+  - id: "関治之"
+    name: "関治之（Code for Japan）"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "hal_sk"
+    tags: ["gov", "civictech"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "石井大地"
+    name: "石井大地（グラファー）"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "daichi_ishii"
+    tags: ["gov"]
+    tier: 2
+    note: "行政DX。ハンドル要確認"
+    verified: false
+  - id: "松尾研究所-松尾豊"
+    name: "松尾研究所 / 松尾豊"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: "https://matsuo-institute.com"
+    feed: null
+    x: "matsuo_lab"
+    tags: ["ai"]
+    tier: 2
+    note: "ハンドル要確認"
+    verified: false
+  - id: "日本ディ-プラ-ニング協会"
+    name: "日本ディープラーニング協会（JDLA）"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.jdla.org"
+    feed: null
+    x: "JDLA_official"
+    tags: ["ai"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "和田卓人"
+    name: "和田卓人（t_wada）"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "t_wada"
+    tags: ["dev"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "mizchi"
+    name: "mizchi"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "rss"
+    lang: "ja"
+    url: "https://zenn.dev/mizchi"
+    feed: "https://zenn.dev/mizchi/feed"
+    x: "mizchi"
+    tags: ["dev", "ai"]
+    tier: 2
+    note: "AIコーディング実務"
+    verified: false
+  - id: "堀江貴文"
+    name: "堀江貴文"
+    group: "F. 起業家・AI実務家（国内）"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "takapon_jp"
+    tags: ["startup"]
+    tier: 3
+    note: "参考。優先度低"
+    verified: false
+  # ── G. 生成AI・開発メディア
+  - id: "zenn-トピック-claudecode"
+    name: "Zenn トピック: claudecode"
+    group: "G. 生成AI・開発メディア"
+    kind: "rss"
+    lang: "ja"
+    url: "https://zenn.dev/topics/claudecode"
+    feed: "https://zenn.dev/topics/claudecode/feed"
+    x: null
+    tags: ["ai", "dev"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "zenn-トピック-生成ai"
+    name: "Zenn トピック: 生成ai"
+    group: "G. 生成AI・開発メディア"
+    kind: "rss"
+    lang: "ja"
+    url: "https://zenn.dev/topics/生成ai"
+    feed: "https://zenn.dev/topics/生成ai/feed"
+    x: null
+    tags: ["ai"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "zenn-トピック-mcp"
+    name: "Zenn トピック: mcp"
+    group: "G. 生成AI・開発メディア"
+    kind: "rss"
+    lang: "ja"
+    url: "https://zenn.dev/topics/mcp"
+    feed: "https://zenn.dev/topics/mcp/feed"
+    x: null
+    tags: ["ai", "dev"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "zenn-トピック-nextjs"
+    name: "Zenn トピック: nextjs"
+    group: "G. 生成AI・開発メディア"
+    kind: "rss"
+    lang: "ja"
+    url: "https://zenn.dev/topics/nextjs"
+    feed: "https://zenn.dev/topics/nextjs/feed"
+    x: null
+    tags: ["dev"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "qiita-タグ-生成ai"
+    name: "Qiita タグ: 生成AI"
+    group: "G. 生成AI・開発メディア"
+    kind: "rss"
+    lang: "ja"
+    url: "https://qiita.com/tags/生成ai"
+    feed: "https://qiita.com/tags/生成ai/feed"
+    x: null
+    tags: ["ai"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "publickey"
+    name: "Publickey"
+    group: "G. 生成AI・開発メディア"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.publickey1.jp"
+    feed: "https://www.publickey1.jp/atom.xml"
+    x: "publickey"
+    tags: ["dev"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "itmedia-ai"
+    name: "ITmedia AI+"
+    group: "G. 生成AI・開発メディア"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.itmedia.co.jp/aiplus/"
+    feed: "https://rss.itmedia.co.jp/rss/2.0/aiplus.xml"
+    x: null
+    tags: ["ai"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "日経クロステック"
+    name: "日経クロステック（AI）"
+    group: "G. 生成AI・開発メディア"
+    kind: "rss"
+    lang: "ja"
+    url: "https://xtech.nikkei.com"
+    feed: "https://xtech.nikkei.com/rss/xtech-it.rdf"
+    x: null
+    tags: ["dev", "ai"]
+    tier: 2
+    note: "有料。見出しのみ"
+    verified: false
+  - id: "ledge-ai"
+    name: "Ledge.ai"
+    group: "G. 生成AI・開発メディア"
+    kind: "rss"
+    lang: "ja"
+    url: "https://ledge.ai"
+    feed: "https://ledge.ai/feed/"
+    x: null
+    tags: ["ai", "business"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "ainow"
+    name: "AINOW"
+    group: "G. 生成AI・開発メディア"
+    kind: "rss"
+    lang: "ja"
+    url: "https://ainow.ai"
+    feed: "https://ainow.ai/feed/"
+    x: null
+    tags: ["ai"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "aismiley"
+    name: "AIsmiley"
+    group: "G. 生成AI・開発メディア"
+    kind: "rss"
+    lang: "ja"
+    url: "https://aismiley.co.jp"
+    feed: "https://aismiley.co.jp/feed/"
+    x: null
+    tags: ["ai", "business"]
+    tier: 3
+    note: "導入事例"
+    verified: false
+  - id: "hugging-face-blog"
+    name: "Hugging Face Blog"
+    group: "G. 生成AI・開発メディア"
+    kind: "rss"
+    lang: "en"
+    url: "https://huggingface.co/blog"
+    feed: "https://huggingface.co/blog/feed.xml"
+    x: "huggingface"
+    tags: ["ai"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "github-changelog"
+    name: "GitHub Changelog"
+    group: "G. 生成AI・開発メディア"
+    kind: "rss"
+    lang: "en"
+    url: "https://github.blog/changelog/"
+    feed: "https://github.blog/changelog/feed/"
+    x: "github"
+    tags: ["dev"]
+    tier: 2
+    note: "Copilot・Actions"
+    verified: false
+  - id: "model-context-protocol"
+    name: "Model Context Protocol（公式）"
+    group: "G. 生成AI・開発メディア"
+    kind: "rss"
+    lang: "en"
+    url: "https://modelcontextprotocol.io"
+    feed: "https://blog.modelcontextprotocol.io/index.xml"
+    x: null
+    tags: ["ai", "dev"]
+    tier: 2
+    note: "RSS要確認"
+    verified: false
+  - id: "cursor-changelog"
+    name: "Cursor Changelog"
+    group: "G. 生成AI・開発メディア"
+    kind: "rss"
+    lang: "en"
+    url: "https://cursor.com/changelog"
+    feed: "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_cursor.xml"
+    x: "cursor_ai"
+    tags: ["ai", "dev"]
+    tier: 3
+    note: ""
+    verified: true
+  - id: "ben-s-bites"
+    name: "Ben's Bites"
+    group: "G. 生成AI・開発メディア"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.bensbites.com"
+    feed: null
+    x: "bensbites"
+    tags: ["ai"]
+    tier: 2
+    note: "デイリーAIニュース（英）"
+    verified: false
+  - id: "tldr-ai"
+    name: "TLDR AI"
+    group: "G. 生成AI・開発メディア"
+    kind: "page"
+    lang: "en"
+    url: "https://tldr.tech/ai"
+    feed: null
+    x: null
+    tags: ["ai"]
+    tier: 3
+    note: "メール購読→転送で取り込み"
+    verified: false
+  - id: "googleニュ-ス-生成ai-自治体"
+    name: "Googleニュース: 生成AI 自治体"
+    group: "G. 生成AI・開発メディア"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E7%94%9F%E6%88%90AI%20%E8%87%AA%E6%B2%BB%E4%BD%93&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["ai", "gov"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-生成ai-中小企業-導入"
+    name: "Googleニュース: 生成AI 中小企業 導入"
+    group: "G. 生成AI・開発メディア"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E7%94%9F%E6%88%90AI%20%E4%B8%AD%E5%B0%8F%E4%BC%81%E6%A5%AD%20%E5%B0%8E%E5%85%A5&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["ai", "business"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-claude-code"
+    name: "Googleニュース: Claude Code"
+    group: "G. 生成AI・開発メディア"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=Claude%20Code&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["ai", "dev"]
+    tier: 2
+    note: ""
+    verified: false
+  # ── H. 地方創生・協力隊
+  - id: "総務省-新着情報"
+    name: "総務省 新着情報"
+    group: "H. 地方創生・協力隊"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.soumu.go.jp"
+    feed: "https://www.soumu.go.jp/news.rdf"
+    x: "MIC_JAPAN"
+    tags: ["gov", "local"]
+    tier: 1
+    note: "公式RSS（確認済）。協力隊・地域力創造・特別交付税"
+    verified: true
+  - id: "総務省-地域力創造グル-プ"
+    name: "総務省 地域力創造グループ"
+    group: "H. 地方創生・協力隊"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.soumu.go.jp/main_sosiki/jichi_gyousei/c-gyousei/"
+    feed: null
+    x: null
+    tags: ["local"]
+    tier: 1
+    note: "協力隊・地域人材ネット・関係人口"
+    verified: false
+  - id: "ニッポン移住-交流ナビ-join"
+    name: "ニッポン移住・交流ナビ JOIN"
+    group: "H. 地方創生・協力隊"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.iju-join.jp"
+    feed: null
+    x: "iju_join"
+    tags: ["local", "iju"]
+    tier: 1
+    note: "協力隊募集・ニュース。RSS要確認"
+    verified: false
+  - id: "地域おこし協力隊-公式"
+    name: "地域おこし協力隊 公式（総務省）"
+    group: "H. 地方創生・協力隊"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.chiikiokoshitai.jp"
+    feed: null
+    x: "chiikiokoshi"
+    tags: ["local"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "内閣官房-新しい地方経済-生活環境創生本部"
+    name: "内閣官房 新しい地方経済・生活環境創生本部（地方創生2.0）"
+    group: "H. 地方創生・協力隊"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.chisou.go.jp"
+    feed: null
+    x: null
+    tags: ["local", "gov"]
+    tier: 1
+    note: "交付金・基本構想"
+    verified: false
+  - id: "内閣府-rss"
+    name: "内閣府 RSS（新着）"
+    group: "H. 地方創生・協力隊"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.cao.go.jp/rss/index.html"
+    feed: null
+    x: null
+    tags: ["gov"]
+    tier: 2
+    note: "RSS一覧ページあり。実装時に該当フィードを選ぶ"
+    verified: false
+  - id: "ふるさと回帰支援センタ"
+    name: "ふるさと回帰支援センター"
+    group: "H. 地方創生・協力隊"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.furusatokaiki.net"
+    feed: null
+    x: "furusatokaiki"
+    tags: ["iju"]
+    tier: 2
+    note: "移住動向ランキング"
+    verified: false
+  - id: "木下斉"
+    name: "木下斉"
+    group: "H. 地方創生・協力隊"
+    kind: "note"
+    lang: "ja"
+    url: "https://note.com/shoutengai"
+    feed: "https://note.com/shoutengai/rss"
+    x: "shoutengai"
+    tags: ["local"]
+    tier: 1
+    note: "地域経営・稼ぐまちづくり。Voicy「狂犬の本音」も"
+    verified: false
+  - id: "高橋博之"
+    name: "高橋博之（雨風太陽／ポケットマルシェ）"
+    group: "H. 地方創生・協力隊"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "takahashi_hiroy"
+    tags: ["local", "food"]
+    tier: 1
+    note: "関係人口。ハンドル要確認"
+    verified: false
+  - id: "指出一正"
+    name: "指出一正（ソトコト）"
+    group: "H. 地方創生・協力隊"
+    kind: "x"
+    lang: "ja"
+    url: "https://sotokoto-online.jp"
+    feed: null
+    x: "sashide"
+    tags: ["local"]
+    tier: 2
+    note: "ハンドル要確認"
+    verified: false
+  - id: "林篤志"
+    name: "林篤志（Next Commons Lab）"
+    group: "H. 地方創生・協力隊"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: null
+    tags: ["local"]
+    tier: 2
+    note: "ハンドル要確認"
+    verified: false
+  - id: "田中輝美"
+    name: "田中輝美（関係人口研究）"
+    group: "H. 地方創生・協力隊"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: null
+    tags: ["local"]
+    tier: 3
+    note: "ハンドル要確認"
+    verified: false
+  - id: "岩佐大輝"
+    name: "岩佐大輝（GRA／ミガキイチゴ）"
+    group: "H. 地方創生・協力隊"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "hiroki_iwasa"
+    tags: ["local", "food"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "牧大介"
+    name: "牧大介（エーゼログループ／西粟倉）"
+    group: "H. 地方創生・協力隊"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: null
+    tags: ["local"]
+    tier: 3
+    note: "ハンドル要確認"
+    verified: false
+  - id: "古田秘馬"
+    name: "古田秘馬（umari）"
+    group: "H. 地方創生・協力隊"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: null
+    tags: ["local", "food"]
+    tier: 3
+    note: "ハンドル要確認"
+    verified: false
+  - id: "齋藤潤一"
+    name: "齋藤潤一（地方創生イノベーター）"
+    group: "H. 地方創生・協力隊"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: null
+    tags: ["local"]
+    tier: 3
+    note: "ハンドル要確認"
+    verified: false
+  - id: "ソトコト"
+    name: "ソトコト"
+    group: "H. 地方創生・協力隊"
+    kind: "rss"
+    lang: "ja"
+    url: "https://sotokoto-online.jp"
+    feed: "https://sotokoto-online.jp/feed"
+    x: null
+    tags: ["local"]
+    tier: 1
+    note: "RSS要確認"
+    verified: false
+  - id: "turns"
+    name: "TURNS"
+    group: "H. 地方創生・協力隊"
+    kind: "rss"
+    lang: "ja"
+    url: "https://turns.jp"
+    feed: "https://turns.jp/feed"
+    x: null
+    tags: ["iju", "local"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "local-letter"
+    name: "LOCAL LETTER"
+    group: "H. 地方創生・協力隊"
+    kind: "rss"
+    lang: "ja"
+    url: "https://localletter.jp"
+    feed: "https://localletter.jp/feed"
+    x: null
+    tags: ["local"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "glocal-mission-times"
+    name: "Glocal Mission Times"
+    group: "H. 地方創生・協力隊"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.glocaltimes.jp"
+    feed: "https://www.glocaltimes.jp/feed"
+    x: null
+    tags: ["local", "iju"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "自治体通信"
+    name: "自治体通信"
+    group: "H. 地方創生・協力隊"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.jt-tsushin.jp"
+    feed: null
+    x: null
+    tags: ["gov"]
+    tier: 2
+    note: "RSS要確認"
+    verified: false
+  - id: "ジチタイワ-クス"
+    name: "ジチタイワークス"
+    group: "H. 地方創生・協力隊"
+    kind: "rss"
+    lang: "ja"
+    url: "https://jichitai.works"
+    feed: "https://jichitai.works/feed"
+    x: null
+    tags: ["gov"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "holg"
+    name: "HOLG（Heroes of Local Government）"
+    group: "H. 地方創生・協力隊"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.holg.jp"
+    feed: "https://www.holg.jp/feed/"
+    x: null
+    tags: ["gov"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "月刊事業構想"
+    name: "月刊事業構想"
+    group: "H. 地方創生・協力隊"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.projectdesign.jp"
+    feed: "https://www.projectdesign.jp/feed"
+    x: null
+    tags: ["local", "business"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "日経グロ-カル"
+    name: "日経グローカル"
+    group: "H. 地方創生・協力隊"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.nikkei.com/theme/?dw=20070501"
+    feed: null
+    x: null
+    tags: ["local"]
+    tier: 3
+    note: "有料。見出しのみ"
+    verified: false
+  - id: "googleニュ-ス-地域おこし協力隊"
+    name: "Googleニュース: 地域おこし協力隊"
+    group: "H. 地方創生・協力隊"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E5%9C%B0%E5%9F%9F%E3%81%8A%E3%81%93%E3%81%97%E5%8D%94%E5%8A%9B%E9%9A%8A&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["local"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-関係人口"
+    name: "Googleニュース: 関係人口"
+    group: "H. 地方創生・協力隊"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E9%96%A2%E4%BF%82%E4%BA%BA%E5%8F%A3&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["local"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-地域力創造アドバイザ"
+    name: "Googleニュース: 地域力創造アドバイザー"
+    group: "H. 地方創生・協力隊"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E5%9C%B0%E5%9F%9F%E5%8A%9B%E5%89%B5%E9%80%A0%E3%82%A2%E3%83%89%E3%83%90%E3%82%A4%E3%82%B6%E3%83%BC&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["local"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-移住-北海道"
+    name: "Googleニュース: 移住 北海道"
+    group: "H. 地方創生・協力隊"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E7%A7%BB%E4%BD%8F%20%E5%8C%97%E6%B5%B7%E9%81%93&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["iju", "hokkaido"]
+    tier: 2
+    note: ""
+    verified: false
+  # ── I. 北海道・道東・根室
+  - id: "北海道庁-新着情報"
+    name: "北海道庁 新着情報"
+    group: "I. 北海道・道東・根室"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.pref.hokkaido.lg.jp"
+    feed: null
+    x: "PrefHokkaido"
+    tags: ["hokkaido", "gov"]
+    tier: 1
+    note: "RSS要確認→ページ差分"
+    verified: false
+  - id: "根室振興局"
+    name: "根室振興局"
+    group: "I. 北海道・道東・根室"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.nemuro.pref.hokkaido.lg.jp"
+    feed: null
+    x: null
+    tags: ["nemuro", "gov"]
+    tier: 1
+    note: "商工労働観光課・地域政策課"
+    verified: false
+  - id: "根室市"
+    name: "根室市"
+    group: "I. 北海道・道東・根室"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.city.nemuro.hokkaido.jp"
+    feed: null
+    x: null
+    tags: ["nemuro", "gov"]
+    tier: 1
+    note: "新着・入札・公募"
+    verified: false
+  - id: "北海道新聞"
+    name: "北海道新聞（どうしん電子版）"
+    group: "I. 北海道・道東・根室"
+    kind: "gnews"
+    lang: "ja"
+    url: "https://www.hokkaido-np.co.jp"
+    feed: "https://news.google.com/rss/search?q=site%3Ahokkaido-np.co.jp%20%E6%A0%B9%E5%AE%A4%20OR%20%E9%87%A7%E8%B7%AF%20OR%20%E9%81%93%E6%9D%B1&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["hokkaido"]
+    tier: 1
+    note: "RSS非公開のためGoogleニュース経由"
+    verified: false
+  - id: "釧路新聞"
+    name: "釧路新聞"
+    group: "I. 北海道・道東・根室"
+    kind: "gnews"
+    lang: "ja"
+    url: "https://www.news-kushiro.jp"
+    feed: "https://news.google.com/rss/search?q=site%3Anews-kushiro.jp&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["nemuro", "hokkaido"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "htb-hbc-stv-uhb-ニュ-ス"
+    name: "HTB/HBC/STV/UHB ニュース（北海道ローカル）"
+    group: "I. 北海道・道東・根室"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E5%8C%97%E6%B5%B7%E9%81%93%20%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%20%E6%A0%B9%E5%AE%A4&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["hokkaido"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "北海道経済産業局"
+    name: "北海道経済産業局"
+    group: "I. 北海道・道東・根室"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.hkd.meti.go.jp"
+    feed: null
+    x: null
+    tags: ["hokkaido", "gov"]
+    tier: 1
+    note: "公募・補助金"
+    verified: false
+  - id: "北海道運輸局"
+    name: "北海道運輸局（観光・クルーズ）"
+    group: "I. 北海道・道東・根室"
+    kind: "page"
+    lang: "ja"
+    url: "https://wwwtb.mlit.go.jp/hokkaido/"
+    feed: null
+    x: null
+    tags: ["hokkaido", "tourism"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "北海道観光機構"
+    name: "北海道観光機構"
+    group: "I. 北海道・道東・根室"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.visit-hokkaido.jp/corporate/"
+    feed: null
+    x: "hokkaido_love"
+    tags: ["hokkaido", "tourism"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "知床ねむろ観光連盟"
+    name: "知床ねむろ観光連盟（EKARI）"
+    group: "I. 北海道・道東・根室"
+    kind: "page"
+    lang: "ja"
+    url: "https://ekari.jp"
+    feed: null
+    x: null
+    tags: ["nemuro", "tourism"]
+    tier: 2
+    note: "自社運用サイト"
+    verified: false
+  - id: "根室市観光協会"
+    name: "根室市観光協会"
+    group: "I. 北海道・道東・根室"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.nemuro-kankou.com"
+    feed: null
+    x: null
+    tags: ["nemuro", "tourism"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "えぞ財団"
+    name: "えぞ財団"
+    group: "I. 北海道・道東・根室"
+    kind: "rss"
+    lang: "ja"
+    url: "https://ezozaidan.com"
+    feed: null
+    x: "ezo_zaidan"
+    tags: ["hokkaido", "local"]
+    tier: 2
+    note: "北海道の地域メディア・コミュニティ。RSS要確認"
+    verified: false
+  - id: "domingo"
+    name: "Domingo（北海道ローカルメディア）"
+    group: "I. 北海道・道東・根室"
+    kind: "rss"
+    lang: "ja"
+    url: "https://domingo.ne.jp"
+    feed: null
+    x: null
+    tags: ["hokkaido"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "北海道likers"
+    name: "北海道Likers"
+    group: "I. 北海道・道東・根室"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.hokkaidolikers.com"
+    feed: null
+    x: null
+    tags: ["hokkaido"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "北海道大学-釧路公立大学"
+    name: "北海道大学 / 釧路公立大学（産学・地域連携）"
+    group: "I. 北海道・道東・根室"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E5%8C%97%E6%B5%B7%E9%81%93%E5%A4%A7%E5%AD%A6%20OR%20%E9%87%A7%E8%B7%AF%E5%85%AC%E7%AB%8B%E5%A4%A7%E5%AD%A6%20%E5%9C%B0%E5%9F%9F%E9%80%A3%E6%90%BA&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["hokkaido", "education"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-根室"
+    name: "Googleニュース: 根室"
+    group: "I. 北海道・道東・根室"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E6%A0%B9%E5%AE%A4&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["nemuro"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-北方領土-or-北方四島"
+    name: "Googleニュース: 北方領土 OR 北方四島"
+    group: "I. 北海道・道東・根室"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E5%8C%97%E6%96%B9%E9%A0%98%E5%9C%9F%20OR%20%E5%8C%97%E6%96%B9%E5%9B%9B%E5%B3%B6&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["nemuro"]
+    tier: 1
+    note: "かけはしの会"
+    verified: false
+  - id: "googleニュ-ス-道東-水産-or-酪農"
+    name: "Googleニュース: 道東 水産 OR 酪農"
+    group: "I. 北海道・道東・根室"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E9%81%93%E6%9D%B1%20%E6%B0%B4%E7%94%A3%20OR%20%E9%85%AA%E8%BE%B2&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["hokkaido", "food"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-北海道-スタ-トアップ"
+    name: "Googleニュース: 北海道 スタートアップ"
+    group: "I. 北海道・道東・根室"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E5%8C%97%E6%B5%B7%E9%81%93%20%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["hokkaido", "startup"]
+    tier: 2
+    note: ""
+    verified: false
+  # ── J. 観光・インバウンド・クルーズ
+  - id: "観光庁-新着-報道発表"
+    name: "観光庁 新着・報道発表"
+    group: "J. 観光・インバウンド・クルーズ"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.mlit.go.jp/kankocho/"
+    feed: null
+    x: "kankocho_mlit"
+    tags: ["tourism", "gov"]
+    tier: 1
+    note: "RSS要確認"
+    verified: false
+  - id: "jnto統計-ニュ-ス"
+    name: "JNTO（日本政府観光局）統計・ニュース"
+    group: "J. 観光・インバウンド・クルーズ"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.jnto.go.jp"
+    feed: null
+    x: "JNTO_JPN"
+    tags: ["tourism"]
+    tier: 1
+    note: "訪日客数（月次）"
+    verified: false
+  - id: "国土交通省-報道発表"
+    name: "国土交通省 報道発表"
+    group: "J. 観光・インバウンド・クルーズ"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.mlit.go.jp/report/press/"
+    feed: null
+    x: "MLIT_JAPAN"
+    tags: ["gov", "tourism"]
+    tier: 2
+    note: "RSS要確認（港湾局クルーズ）"
+    verified: false
+  - id: "国交省-港湾局-クル-ズ振興"
+    name: "国交省 港湾局 クルーズ振興"
+    group: "J. 観光・インバウンド・クルーズ"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.mlit.go.jp/kowan/kowan_tk4_000011.html"
+    feed: null
+    x: null
+    tags: ["cruise"]
+    tier: 1
+    note: "寄港回数統計"
+    verified: false
+  - id: "やまとごころ-jp"
+    name: "やまとごころ.jp"
+    group: "J. 観光・インバウンド・クルーズ"
+    kind: "rss"
+    lang: "ja"
+    url: "https://yamatogokoro.jp"
+    feed: "https://yamatogokoro.jp/feed/"
+    x: null
+    tags: ["tourism", "inbound"]
+    tier: 1
+    note: "インバウンド専門"
+    verified: false
+  - id: "村山慶輔"
+    name: "村山慶輔（やまとごころ）"
+    group: "J. 観光・インバウンド・クルーズ"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "keisukemurayama"
+    tags: ["inbound"]
+    tier: 2
+    note: "ハンドル要確認"
+    verified: false
+  - id: "トラベルボイス"
+    name: "トラベルボイス"
+    group: "J. 観光・インバウンド・クルーズ"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.travelvoice.jp"
+    feed: "https://www.travelvoice.jp/feed"
+    x: null
+    tags: ["tourism"]
+    tier: 1
+    note: "観光産業ニュース"
+    verified: false
+  - id: "観光経済新聞"
+    name: "観光経済新聞"
+    group: "J. 観光・インバウンド・クルーズ"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.kankokeizai.com"
+    feed: "https://www.kankokeizai.com/feed/"
+    x: null
+    tags: ["tourism"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "トラベルジャ-ナル"
+    name: "トラベルジャーナル"
+    group: "J. 観光・インバウンド・クルーズ"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.tjnet.co.jp"
+    feed: null
+    x: null
+    tags: ["tourism"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "jtb総合研究所"
+    name: "JTB総合研究所"
+    group: "J. 観光・インバウンド・クルーズ"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.tourism.jp"
+    feed: "https://www.tourism.jp/feed/"
+    x: null
+    tags: ["tourism"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "星野リゾ-ト"
+    name: "星野リゾート（星野佳路の発言）"
+    group: "J. 観光・インバウンド・クルーズ"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E6%98%9F%E9%87%8E%E4%BD%B3%E8%B7%AF&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["tourism"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "cruise-industry-news"
+    name: "Cruise Industry News"
+    group: "J. 観光・インバウンド・クルーズ"
+    kind: "rss"
+    lang: "en"
+    url: "https://cruiseindustrynews.com"
+    feed: "https://cruiseindustrynews.com/feed/"
+    x: null
+    tags: ["cruise"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "seatrade-cruise-news"
+    name: "Seatrade Cruise News"
+    group: "J. 観光・インバウンド・クルーズ"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.seatrade-cruise.com"
+    feed: null
+    x: null
+    tags: ["cruise"]
+    tier: 3
+    note: "RSS要確認"
+    verified: false
+  - id: "airbnb-newsroom"
+    name: "Airbnb Newsroom"
+    group: "J. 観光・インバウンド・クルーズ"
+    kind: "rss"
+    lang: "en"
+    url: "https://news.airbnb.com"
+    feed: "https://news.airbnb.com/feed/"
+    x: "Airbnb"
+    tags: ["tourism"]
+    tier: 3
+    note: "体験（Experiences）"
+    verified: false
+  - id: "skift"
+    name: "Skift"
+    group: "J. 観光・インバウンド・クルーズ"
+    kind: "rss"
+    lang: "en"
+    url: "https://skift.com"
+    feed: "https://skift.com/feed/"
+    x: "skift"
+    tags: ["tourism"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-クル-ズ-北海道"
+    name: "Googleニュース: クルーズ 北海道"
+    group: "J. 観光・インバウンド・クルーズ"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E3%82%AF%E3%83%AB%E3%83%BC%E3%82%BA%20%E5%8C%97%E6%B5%B7%E9%81%93&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["cruise", "hokkaido"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-インバウンド-地方"
+    name: "Googleニュース: インバウンド 地方"
+    group: "J. 観光・インバウンド・クルーズ"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E3%82%A4%E3%83%B3%E3%83%90%E3%82%A6%E3%83%B3%E3%83%89%20%E5%9C%B0%E6%96%B9%20%E8%AA%98%E5%AE%A2&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["inbound"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-dmc-or-dmo-観光地域づくり法人"
+    name: "Googleニュース: DMC OR DMO 観光地域づくり法人"
+    group: "J. 観光・インバウンド・クルーズ"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=DMO%20%E8%A6%B3%E5%85%89%E5%9C%B0%E5%9F%9F%E3%81%A5%E3%81%8F%E3%82%8A%E6%B3%95%E4%BA%BA&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["tourism"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-着地型-体験-ガイド"
+    name: "Googleニュース: 着地型 体験 ガイド"
+    group: "J. 観光・インバウンド・クルーズ"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E7%9D%80%E5%9C%B0%E5%9E%8B%E8%A6%B3%E5%85%89%20%E4%BD%93%E9%A8%93%20%E3%82%AC%E3%82%A4%E3%83%89&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["tourism"]
+    tier: 3
+    note: ""
+    verified: false
+  # ── K. 福祉
+  - id: "厚生労働省-新着情報"
+    name: "厚生労働省 新着情報"
+    group: "K. 福祉"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.mhlw.go.jp"
+    feed: "https://www.mhlw.go.jp/stf/news.rdf"
+    x: "MHLWitter"
+    tags: ["welfare", "gov"]
+    tier: 1
+    note: "RSS要確認"
+    verified: false
+  - id: "wam-net"
+    name: "WAM NET（福祉医療機構）"
+    group: "K. 福祉"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.wam.go.jp"
+    feed: null
+    x: null
+    tags: ["welfare"]
+    tier: 1
+    note: "障害福祉サービス報酬改定・通知"
+    verified: false
+  - id: "福祉新聞"
+    name: "福祉新聞"
+    group: "K. 福祉"
+    kind: "rss"
+    lang: "ja"
+    url: "https://fukushishimbun.com"
+    feed: "https://fukushishimbun.com/feed"
+    x: null
+    tags: ["welfare"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "障害者ドットコム"
+    name: "障害者ドットコム"
+    group: "K. 福祉"
+    kind: "rss"
+    lang: "ja"
+    url: "https://shohgaisha.com"
+    feed: null
+    x: null
+    tags: ["welfare"]
+    tier: 3
+    note: "RSS要確認"
+    verified: false
+  - id: "joint-介護-福祉ニュ-ス"
+    name: "JOINT 介護・福祉ニュース"
+    group: "K. 福祉"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.joint-kaigo.com"
+    feed: "https://www.joint-kaigo.com/feed"
+    x: null
+    tags: ["welfare"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "駒崎弘樹"
+    name: "駒崎弘樹（フローレンス）"
+    group: "K. 福祉"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "Hiroki_Komazaki"
+    tags: ["welfare", "policy"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "安部敏樹"
+    name: "安部敏樹（リディラバ）"
+    group: "K. 福祉"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "toshikiabe"
+    tags: ["welfare", "social"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "今井紀明"
+    name: "今井紀明（D×P）"
+    group: "K. 福祉"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "NoriakiImai"
+    tags: ["welfare", "education"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "長谷川敦弥"
+    name: "長谷川敦弥（LITALICO）"
+    group: "K. 福祉"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: null
+    tags: ["welfare"]
+    tier: 2
+    note: "ハンドル要確認"
+    verified: false
+  - id: "松田崇弥-松田文登"
+    name: "松田崇弥・松田文登（ヘラルボニー）"
+    group: "K. 福祉"
+    kind: "x"
+    lang: "ja"
+    url: "https://www.heralbony.jp"
+    feed: null
+    x: "heralbony"
+    tags: ["welfare", "art"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "高浜敏之"
+    name: "高浜敏之（土屋）"
+    group: "K. 福祉"
+    kind: "note"
+    lang: "ja"
+    url: "https://note.com/tsuchiya_group"
+    feed: null
+    x: null
+    tags: ["welfare"]
+    tier: 3
+    note: "noteID要確認"
+    verified: false
+  - id: "ウェルモ-カイポケ-等-福祉-itニュ-ス"
+    name: "ウェルモ / カイポケ 等 福祉×ITニュース"
+    group: "K. 福祉"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E9%9A%9C%E5%AE%B3%E7%A6%8F%E7%A5%89%20ICT%20OR%20AI%20%E4%BA%8B%E6%A5%AD%E6%89%80&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["welfare", "ai"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-就労継続支援-or-就労移行支援"
+    name: "Googleニュース: 就労継続支援 OR 就労移行支援"
+    group: "K. 福祉"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E5%B0%B1%E5%8A%B4%E7%B6%99%E7%B6%9A%E6%94%AF%E6%8F%B4%20OR%20%E5%B0%B1%E5%8A%B4%E7%A7%BB%E8%A1%8C%E6%94%AF%E6%8F%B4&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["welfare"]
+    tier: 1
+    note: "TASKALL・Maa2"
+    verified: false
+  - id: "googleニュ-ス-障害者雇用"
+    name: "Googleニュース: 障害者雇用"
+    group: "K. 福祉"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E9%9A%9C%E5%AE%B3%E8%80%85%E9%9B%87%E7%94%A8&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["welfare"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-個別支援計画-or-報酬改定-障害福祉"
+    name: "Googleニュース: 個別支援計画 OR 報酬改定 障害福祉"
+    group: "K. 福祉"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E9%9A%9C%E5%AE%B3%E7%A6%8F%E7%A5%89%20%E5%A0%B1%E9%85%AC%E6%94%B9%E5%AE%9A&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["welfare"]
+    tier: 2
+    note: ""
+    verified: false
+  # ── L. 教育
+  - id: "文部科学省-新着"
+    name: "文部科学省 新着"
+    group: "L. 教育"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.mext.go.jp"
+    feed: null
+    x: "mextjapan"
+    tags: ["education", "gov"]
+    tier: 1
+    note: "RSS要確認"
+    verified: false
+  - id: "教育新聞"
+    name: "教育新聞"
+    group: "L. 教育"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.kyobun.co.jp"
+    feed: "https://www.kyobun.co.jp/feed/"
+    x: null
+    tags: ["education"]
+    tier: 2
+    note: "有料記事多い"
+    verified: false
+  - id: "edtechzine"
+    name: "EdTechZine"
+    group: "L. 教育"
+    kind: "rss"
+    lang: "ja"
+    url: "https://edtechzine.jp"
+    feed: "https://edtechzine.jp/rss/new.xml"
+    x: null
+    tags: ["education", "edtech"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "リセマム"
+    name: "リセマム"
+    group: "L. 教育"
+    kind: "rss"
+    lang: "ja"
+    url: "https://resemom.jp"
+    feed: "https://resemom.jp/rss/index.rdf"
+    x: null
+    tags: ["education"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "カタリバ-今村久美"
+    name: "カタリバ / 今村久美"
+    group: "L. 教育"
+    kind: "x"
+    lang: "ja"
+    url: "https://www.katariba.or.jp"
+    feed: null
+    x: "imamurakumi"
+    tags: ["education"]
+    tier: 1
+    note: "マイプロジェクトアワード"
+    verified: false
+  - id: "地域-教育魅力化プラットフォ-ム"
+    name: "地域・教育魅力化プラットフォーム（地域みらい留学）"
+    group: "L. 教育"
+    kind: "x"
+    lang: "ja"
+    url: "https://c-platform.or.jp"
+    feed: null
+    x: "c_platform_jp"
+    tags: ["education", "local"]
+    tier: 1
+    note: "高校魅力化。根室高校との接点"
+    verified: false
+  - id: "苫野一徳"
+    name: "苫野一徳"
+    group: "L. 教育"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "ittokutomano"
+    tags: ["education"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "藤原和博"
+    name: "藤原和博"
+    group: "L. 教育"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "kazu_fujihara"
+    tags: ["education"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "工藤勇一"
+    name: "工藤勇一"
+    group: "L. 教育"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E5%B7%A5%E8%97%A4%E5%8B%87%E4%B8%80%20%E6%95%99%E8%82%B2&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["education"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "ライフイズテック-水野雄介"
+    name: "ライフイズテック / 水野雄介"
+    group: "L. 教育"
+    kind: "x"
+    lang: "ja"
+    url: "https://life-is-tech.com"
+    feed: null
+    x: "lifeistech"
+    tags: ["education", "edtech"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "inspire-high"
+    name: "Inspire High"
+    group: "L. 教育"
+    kind: "x"
+    lang: "ja"
+    url: "https://www.inspirehigh.com"
+    feed: null
+    x: "InspireHigh_jp"
+    tags: ["education"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "タクトピア"
+    name: "タクトピア"
+    group: "L. 教育"
+    kind: "x"
+    lang: "ja"
+    url: "https://taktopia.com"
+    feed: null
+    x: "taktopia"
+    tags: ["education"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "日本政策金融公庫-高校生ビジネスプラン-グランプリ"
+    name: "日本政策金融公庫 高校生ビジネスプラン・グランプリ"
+    group: "L. 教育"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.jfc.go.jp/n/grandprix/"
+    feed: null
+    x: null
+    tags: ["education", "startup"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "sal-khan-khan-academy-blog"
+    name: "Sal Khan / Khan Academy Blog"
+    group: "L. 教育"
+    kind: "rss"
+    lang: "en"
+    url: "https://blog.khanacademy.org"
+    feed: "https://blog.khanacademy.org/feed/"
+    x: "salkhanacademy"
+    tags: ["education", "ai"]
+    tier: 2
+    note: "Khanmigo"
+    verified: false
+  - id: "deeplearning-ai"
+    name: "DeepLearning.AI（講座・The Batch）"
+    group: "L. 教育"
+    kind: "x"
+    lang: "en"
+    url: null
+    feed: null
+    x: "DeepLearningAI"
+    tags: ["education", "ai"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "n高-s高-角川ドワンゴ学園"
+    name: "N高・S高 / 角川ドワンゴ学園"
+    group: "L. 教育"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=N%E9%AB%98%20OR%20S%E9%AB%98%20OR%20ZEN%E5%A4%A7%E5%AD%A6&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["education"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-探究学習-高校"
+    name: "Googleニュース: 探究学習 高校"
+    group: "L. 教育"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E6%8E%A2%E7%A9%B6%E5%AD%A6%E7%BF%92%20%E9%AB%98%E6%A0%A1&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["education"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-高校生-起業-or-アプリ開発"
+    name: "Googleニュース: 高校生 起業 OR アプリ開発"
+    group: "L. 教育"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E9%AB%98%E6%A0%A1%E7%94%9F%20%E8%B5%B7%E6%A5%AD%20OR%20%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["education", "startup"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-生成ai-教育-学校"
+    name: "Googleニュース: 生成AI 教育 学校"
+    group: "L. 教育"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E7%94%9F%E6%88%90AI%20%E5%AD%A6%E6%A0%A1%20%E6%8E%88%E6%A5%AD&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["education", "ai"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-高校魅力化"
+    name: "Googleニュース: 高校魅力化"
+    group: "L. 教育"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E9%AB%98%E6%A0%A1%E9%AD%85%E5%8A%9B%E5%8C%96&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["education", "local"]
+    tier: 2
+    note: ""
+    verified: false
+  # ── M. 音楽
+  - id: "音楽ナタリ"
+    name: "音楽ナタリー"
+    group: "M. 音楽"
+    kind: "rss"
+    lang: "ja"
+    url: "https://natalie.mu/music"
+    feed: "https://natalie.mu/music/feed/news"
+    x: null
+    tags: ["music"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "rolling-stone-japan"
+    name: "Rolling Stone Japan"
+    group: "M. 音楽"
+    kind: "rss"
+    lang: "ja"
+    url: "https://rollingstonejapan.com"
+    feed: "https://rollingstonejapan.com/feed/"
+    x: null
+    tags: ["music"]
+    tier: 2
+    note: "RSS要確認"
+    verified: false
+  - id: "real-sound"
+    name: "Real Sound"
+    group: "M. 音楽"
+    kind: "rss"
+    lang: "ja"
+    url: "https://realsound.jp"
+    feed: "https://realsound.jp/feed"
+    x: null
+    tags: ["music"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "spincoaster"
+    name: "Spincoaster"
+    group: "M. 音楽"
+    kind: "rss"
+    lang: "ja"
+    url: "https://spincoaster.com"
+    feed: "https://spincoaster.com/feed"
+    x: null
+    tags: ["music"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "mikiki"
+    name: "Mikiki（タワーレコード）"
+    group: "M. 音楽"
+    kind: "rss"
+    lang: "ja"
+    url: "https://mikiki.tokyo.jp"
+    feed: "https://mikiki.tokyo.jp/rss"
+    x: null
+    tags: ["music", "jazz"]
+    tier: 3
+    note: "RSS要確認"
+    verified: false
+  - id: "jazz-japan"
+    name: "JaZZ JAPAN"
+    group: "M. 音楽"
+    kind: "page"
+    lang: "ja"
+    url: "https://jazzjapan.co.jp"
+    feed: null
+    x: null
+    tags: ["jazz"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "arban"
+    name: "ARBAN"
+    group: "M. 音楽"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.arban-mag.com"
+    feed: "https://www.arban-mag.com/feed"
+    x: null
+    tags: ["jazz"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "jazz-tokyo"
+    name: "Jazz Tokyo"
+    group: "M. 音楽"
+    kind: "rss"
+    lang: "ja"
+    url: "https://jazztokyo.org"
+    feed: "https://jazztokyo.org/feed/"
+    x: null
+    tags: ["jazz"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "柳樂光隆"
+    name: "柳樂光隆（Jazz The New Chapter）"
+    group: "M. 音楽"
+    kind: "note"
+    lang: "ja"
+    url: "https://note.com/elis_ragina"
+    feed: "https://note.com/elis_ragina/rss"
+    x: "Elis_ragiNa"
+    tags: ["jazz"]
+    tier: 1
+    note: "noteID要確認"
+    verified: false
+  - id: "柴那典"
+    name: "柴那典"
+    group: "M. 音楽"
+    kind: "x"
+    lang: "ja"
+    url: "https://shiba710.hateblo.jp"
+    feed: "https://shiba710.hateblo.jp/feed"
+    x: "shiba710"
+    tags: ["music"]
+    tier: 2
+    note: "音楽ジャーナリスト"
+    verified: false
+  - id: "山口哲一"
+    name: "山口哲一（Studio ENTRE）"
+    group: "M. 音楽"
+    kind: "note"
+    lang: "ja"
+    url: "https://note.com/yamabug"
+    feed: "https://note.com/yamabug/rss"
+    x: "yamabug"
+    tags: ["music", "business"]
+    tier: 1
+    note: "音楽ビジネス×テック"
+    verified: false
+  - id: "鈴木貴歩"
+    name: "鈴木貴歩（ParadeAll）"
+    group: "M. 音楽"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: null
+    tags: ["music", "business"]
+    tier: 3
+    note: "ハンドル要確認"
+    verified: false
+  - id: "挾間美帆"
+    name: "挾間美帆"
+    group: "M. 音楽"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "miho_hazama"
+    tags: ["jazz"]
+    tier: 3
+    note: "ハンドル要確認"
+    verified: false
+  - id: "石若駿"
+    name: "石若駿"
+    group: "M. 音楽"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "shun_ishiwaka"
+    tags: ["jazz"]
+    tier: 3
+    note: "ハンドル要確認"
+    verified: false
+  - id: "blue-note-tokyo"
+    name: "Blue Note Tokyo"
+    group: "M. 音楽"
+    kind: "x"
+    lang: "ja"
+    url: "https://www.bluenote.co.jp/jp/"
+    feed: null
+    x: "bluenotetokyo"
+    tags: ["jazz"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "sapporo-city-jazz"
+    name: "Sapporo City Jazz"
+    group: "M. 音楽"
+    kind: "page"
+    lang: "ja"
+    url: "https://sapporocityjazz.jp"
+    feed: null
+    x: null
+    tags: ["jazz", "hokkaido"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "定禅寺ストリ-トジャズフェスティバル"
+    name: "定禅寺ストリートジャズフェスティバル（仙台）"
+    group: "M. 音楽"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.j-streetjazz.com"
+    feed: null
+    x: null
+    tags: ["jazz", "festival"]
+    tier: 1
+    note: "ストリートジャズの先行モデル"
+    verified: false
+  - id: "横濱ジャズプロムナ-ド"
+    name: "横濱ジャズプロムナード"
+    group: "M. 音楽"
+    kind: "page"
+    lang: "ja"
+    url: "https://jazzpro.jp"
+    feed: null
+    x: null
+    tags: ["jazz", "festival"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "高槻ジャズストリ-ト"
+    name: "高槻ジャズストリート"
+    group: "M. 音楽"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.0726.info"
+    feed: null
+    x: null
+    tags: ["jazz", "festival"]
+    tier: 2
+    note: "市民ボランティア運営の参考"
+    verified: false
+  - id: "rising-sun-rock-festival-in-ezo"
+    name: "RISING SUN ROCK FESTIVAL in EZO"
+    group: "M. 音楽"
+    kind: "x"
+    lang: "ja"
+    url: null
+    feed: null
+    x: "rsr_official"
+    tags: ["festival", "hokkaido"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "ぴあ総研"
+    name: "ぴあ総研（ライブ・エンタテインメント白書）"
+    group: "M. 音楽"
+    kind: "page"
+    lang: "ja"
+    url: "https://corporate.pia.jp/news/"
+    feed: null
+    x: null
+    tags: ["music", "business"]
+    tier: 3
+    note: "市場規模データ"
+    verified: false
+  - id: "acpc"
+    name: "ACPC（コンサートプロモーターズ協会）"
+    group: "M. 音楽"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.acpc.or.jp"
+    feed: null
+    x: null
+    tags: ["music", "business"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "music-business-worldwide"
+    name: "Music Business Worldwide"
+    group: "M. 音楽"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.musicbusinessworldwide.com"
+    feed: "https://www.musicbusinessworldwide.com/feed/"
+    x: null
+    tags: ["music", "business"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "music-ally"
+    name: "Music Ally"
+    group: "M. 音楽"
+    kind: "rss"
+    lang: "en"
+    url: "https://musically.com"
+    feed: "https://musically.com/feed/"
+    x: null
+    tags: ["music", "business", "ai"]
+    tier: 2
+    note: "音楽×テック"
+    verified: false
+  - id: "bandcamp-daily"
+    name: "Bandcamp Daily"
+    group: "M. 音楽"
+    kind: "rss"
+    lang: "en"
+    url: "https://daily.bandcamp.com"
+    feed: "https://daily.bandcamp.com/feed"
+    x: null
+    tags: ["music"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "npr-music"
+    name: "NPR Music（Tiny Desk）"
+    group: "M. 音楽"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.npr.org/sections/music/"
+    feed: "https://feeds.npr.org/1039/rss.xml"
+    x: null
+    tags: ["music"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "spotify-newsroom-for-artists"
+    name: "Spotify Newsroom / for Artists"
+    group: "M. 音楽"
+    kind: "rss"
+    lang: "en"
+    url: "https://newsroom.spotify.com"
+    feed: "https://newsroom.spotify.com/feed/"
+    x: null
+    tags: ["music", "podcast"]
+    tier: 2
+    note: "ポッドキャスト運用にも"
+    verified: false
+  - id: "suno-udio"
+    name: "Suno / Udio（音楽生成AI）"
+    group: "M. 音楽"
+    kind: "gnews_en"
+    lang: "en"
+    url: null
+    feed: "https://news.google.com/rss/search?q=Suno%20OR%20Udio%20AI%20music&hl=en-US&gl=US&ceid=US:en"
+    x: null
+    tags: ["music", "ai"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-ジャズフェス-or-ジャズフェスティバル"
+    name: "Googleニュース: ジャズフェス OR ジャズフェスティバル"
+    group: "M. 音楽"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E3%82%B8%E3%83%A3%E3%82%BA%E3%83%95%E3%82%A7%E3%82%B9%E3%83%86%E3%82%A3%E3%83%90%E3%83%AB&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["jazz", "festival"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-音楽フェス-地域-経済効果"
+    name: "Googleニュース: 音楽フェス 地域 経済効果"
+    group: "M. 音楽"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E9%9F%B3%E6%A5%BD%E3%83%95%E3%82%A7%E3%82%B9%20%E5%9C%B0%E5%9F%9F%20%E7%B5%8C%E6%B8%88%E5%8A%B9%E6%9E%9C&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["festival", "local"]
+    tier: 2
+    note: ""
+    verified: false
+  # ── N. 行政DX・GovTech
+  - id: "デジタル庁-新着"
+    name: "デジタル庁 新着"
+    group: "N. 行政DX・GovTech"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.digital.go.jp"
+    feed: null
+    x: "digital_jpn"
+    tags: ["gov", "dx"]
+    tier: 1
+    note: "RSS要確認"
+    verified: false
+  - id: "govtech東京"
+    name: "GovTech東京"
+    group: "N. 行政DX・GovTech"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.govtechtokyo.or.jp"
+    feed: null
+    x: "GovTechTokyo"
+    tags: ["gov", "dx"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "j-lis"
+    name: "J-LIS（地方公共団体情報システム機構）"
+    group: "N. 行政DX・GovTech"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.j-lis.go.jp"
+    feed: null
+    x: null
+    tags: ["gov", "dx"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "code-for-japan"
+    name: "Code for Japan"
+    group: "N. 行政DX・GovTech"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.code4japan.org"
+    feed: "https://note.com/code4japan/rss"
+    x: "codeforjapan"
+    tags: ["civictech"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "自治体dx推進"
+    name: "自治体DX推進（総務省）"
+    group: "N. 行政DX・GovTech"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.soumu.go.jp/denshijiti/index_00001.html"
+    feed: null
+    x: null
+    tags: ["gov", "dx"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-自治体-生成ai-導入"
+    name: "Googleニュース: 自治体 生成AI 導入"
+    group: "N. 行政DX・GovTech"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E8%87%AA%E6%B2%BB%E4%BD%93%20%E7%94%9F%E6%88%90AI%20%E5%B0%8E%E5%85%A5%20%E4%BA%8B%E4%BE%8B&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["gov", "ai"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-官民連携-or-公民連携"
+    name: "Googleニュース: 官民連携 OR 公民連携"
+    group: "N. 行政DX・GovTech"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E5%AE%98%E6%B0%91%E9%80%A3%E6%90%BA%20%E8%87%AA%E6%B2%BB%E4%BD%93%20%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["gov", "startup"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-ガバメントクラウド-or-標準化"
+    name: "Googleニュース: ガバメントクラウド OR 標準化"
+    group: "N. 行政DX・GovTech"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E8%87%AA%E6%B2%BB%E4%BD%93%20%E6%A8%99%E6%BA%96%E5%8C%96%20%E3%82%AC%E3%83%90%E3%83%A1%E3%83%B3%E3%83%88%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["gov", "dx"]
+    tier: 3
+    note: ""
+    verified: false
+  # ── O. 補助金・公募
+  - id: "経済産業省-報道発表"
+    name: "経済産業省 報道発表（Atom）"
+    group: "O. 補助金・公募"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.meti.go.jp/press/"
+    feed: "https://www.meti.go.jp/ml_index_release_atom.xml"
+    x: "meti_NIPPON"
+    tags: ["gov", "subsidy"]
+    tier: 1
+    note: "RSS要確認"
+    verified: false
+  - id: "中小企業庁"
+    name: "中小企業庁"
+    group: "O. 補助金・公募"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.chusho.meti.go.jp"
+    feed: null
+    x: "meti_chusho"
+    tags: ["subsidy"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "j-net21-支援情報ヘッドライン"
+    name: "J-Net21 支援情報ヘッドライン"
+    group: "O. 補助金・公募"
+    kind: "rss"
+    lang: "ja"
+    url: "https://j-net21.smrj.go.jp/snavi/"
+    feed: "https://j-net21.smrj.go.jp/snavi/rss.xml"
+    x: null
+    tags: ["subsidy"]
+    tier: 1
+    note: "北海道で絞り込み可。RSS要確認"
+    verified: false
+  - id: "ミラサポplus"
+    name: "ミラサポplus"
+    group: "O. 補助金・公募"
+    kind: "page"
+    lang: "ja"
+    url: "https://mirasapo-plus.go.jp"
+    feed: null
+    x: null
+    tags: ["subsidy"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "jgrants-新着公募"
+    name: "jGrants 新着公募"
+    group: "O. 補助金・公募"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.jgrants-portal.go.jp"
+    feed: null
+    x: null
+    tags: ["subsidy"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "補助金ポ-タル"
+    name: "補助金ポータル"
+    group: "O. 補助金・公募"
+    kind: "rss"
+    lang: "ja"
+    url: "https://hojyokin-portal.jp"
+    feed: "https://hojyokin-portal.jp/feed"
+    x: null
+    tags: ["subsidy"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "環境省-報道発表"
+    name: "環境省 報道発表"
+    group: "O. 補助金・公募"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.env.go.jp/press/"
+    feed: null
+    x: "Kankyo_Jpn"
+    tags: ["gov", "sdgs"]
+    tier: 2
+    note: "RSS要確認。道東SDGs"
+    verified: false
+  - id: "農林水産省-水産庁-報道発表"
+    name: "農林水産省 / 水産庁 報道発表"
+    group: "O. 補助金・公募"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.maff.go.jp/j/press/"
+    feed: null
+    x: "MAFF_JAPAN"
+    tags: ["gov", "food"]
+    tier: 2
+    note: "RSS要確認"
+    verified: false
+  - id: "文化庁"
+    name: "文化庁（音楽・文化芸術）"
+    group: "O. 補助金・公募"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.bunka.go.jp"
+    feed: null
+    x: "prmag_bunka"
+    tags: ["gov", "music"]
+    tier: 3
+    note: "文化芸術振興費補助金"
+    verified: false
+  - id: "北海道庁-補助金-公募"
+    name: "北海道庁 補助金・公募（経済部・総合政策部）"
+    group: "O. 補助金・公募"
+    kind: "page"
+    lang: "ja"
+    url: "https://www.pref.hokkaido.lg.jp/kz/"
+    feed: null
+    x: null
+    tags: ["hokkaido", "subsidy"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-公募-北海道-補助金-2026"
+    name: "Googleニュース: 公募 北海道 補助金 2026"
+    group: "O. 補助金・公募"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E5%85%AC%E5%8B%9F%20%E5%8C%97%E6%B5%B7%E9%81%93%20%E8%A3%9C%E5%8A%A9%E9%87%91&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["hokkaido", "subsidy"]
+    tier: 2
+    note: ""
+    verified: false
+  # ── P. EC・小売
+  - id: "ネットショップ担当者フォ-ラム"
+    name: "ネットショップ担当者フォーラム"
+    group: "P. EC・小売"
+    kind: "rss"
+    lang: "ja"
+    url: "https://netshop.impress.co.jp"
+    feed: "https://netshop.impress.co.jp/rss/news"
+    x: null
+    tags: ["ec"]
+    tier: 1
+    note: ""
+    verified: false
+  - id: "eczine"
+    name: "ECzine"
+    group: "P. EC・小売"
+    kind: "rss"
+    lang: "ja"
+    url: "https://eczine.jp"
+    feed: "https://eczine.jp/rss/new.xml"
+    x: null
+    tags: ["ec"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "ecのミカタ"
+    name: "ECのミカタ"
+    group: "P. EC・小売"
+    kind: "rss"
+    lang: "ja"
+    url: "https://ecnomikata.com"
+    feed: "https://ecnomikata.com/feed"
+    x: null
+    tags: ["ec"]
+    tier: 2
+    note: "RSS要確認"
+    verified: false
+  - id: "コマ-スピック"
+    name: "コマースピック"
+    group: "P. EC・小売"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.commercepick.com"
+    feed: "https://www.commercepick.com/feed"
+    x: null
+    tags: ["ec"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "日本ネット経済新聞"
+    name: "日本ネット経済新聞"
+    group: "P. EC・小売"
+    kind: "rss"
+    lang: "ja"
+    url: "https://netkeizai.com"
+    feed: "https://netkeizai.com/feed"
+    x: null
+    tags: ["ec"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "shopify-japan-blog"
+    name: "Shopify Japan Blog"
+    group: "P. EC・小売"
+    kind: "rss"
+    lang: "ja"
+    url: "https://www.shopify.com/jp/blog"
+    feed: "https://www.shopify.com/jp/blog.atom"
+    x: "ShopifyJP"
+    tags: ["ec"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-shopify-日本"
+    name: "Googleニュース: Shopify 日本"
+    group: "P. EC・小売"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=Shopify%20%E6%97%A5%E6%9C%AC%20%E5%B0%8E%E5%85%A5&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["ec"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "googleニュ-ス-地域産品-ec-or-越境ec"
+    name: "Googleニュース: 地域産品 EC OR 越境EC"
+    group: "P. EC・小売"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E5%9C%B0%E5%9F%9F%E7%94%A3%E5%93%81%20EC%20OR%20%E8%B6%8A%E5%A2%83EC%20%E5%8C%97%E6%B5%B7%E9%81%93&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["ec", "local"]
+    tier: 2
+    note: ""
+    verified: false
+  # ── Q. 第二層（フォロー先の定点）
+  - id: "hard-fork"
+    name: "Hard Fork（NYT / Kevin Roose・Casey Newton）"
+    group: "Q. 第二層（フォロー先の定点）"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.nytimes.com/column/hard-fork"
+    feed: "https://feeds.simplecast.com/l2i9YnTd"
+    x: "kevinroose"
+    tags: ["ai"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "the-information"
+    name: "The Information（AI）"
+    group: "Q. 第二層（フォロー先の定点）"
+    kind: "page"
+    lang: "en"
+    url: "https://www.theinformation.com"
+    feed: null
+    x: "theinformation"
+    tags: ["ai", "startup"]
+    tier: 3
+    note: "有料。見出しのみ"
+    verified: false
+  - id: "techcrunch-ai"
+    name: "TechCrunch AI"
+    group: "Q. 第二層（フォロー先の定点）"
+    kind: "rss"
+    lang: "en"
+    url: "https://techcrunch.com/category/artificial-intelligence/"
+    feed: "https://techcrunch.com/category/artificial-intelligence/feed/"
+    x: "TechCrunch"
+    tags: ["ai", "startup"]
+    tier: 2
+    note: ""
+    verified: false
+  - id: "the-verge-ai"
+    name: "The Verge AI"
+    group: "Q. 第二層（フォロー先の定点）"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.theverge.com/ai-artificial-intelligence"
+    feed: "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
+    x: "verge"
+    tags: ["ai"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "mit-technology-review"
+    name: "MIT Technology Review（AI）"
+    group: "Q. 第二層（フォロー先の定点）"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.technologyreview.com/topic/artificial-intelligence/"
+    feed: "https://www.technologyreview.com/feed/"
+    x: null
+    tags: ["ai"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "acquired"
+    name: "Acquired（ポッドキャスト）"
+    group: "Q. 第二層（フォロー先の定点）"
+    kind: "rss"
+    lang: "en"
+    url: "https://www.acquired.fm"
+    feed: "https://feeds.transistor.fm/acquired"
+    x: "AcquiredFM"
+    tags: ["startup"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "all-in-podcast"
+    name: "All-In Podcast"
+    group: "Q. 第二層（フォロー先の定点）"
+    kind: "yt"
+    lang: "en"
+    url: "https://www.allin.com"
+    feed: null
+    x: "theallinpod"
+    tags: ["vc"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "every"
+    name: "Every（Chain of Thought 等）"
+    group: "Q. 第二層（フォロー先の定点）"
+    kind: "rss"
+    lang: "en"
+    url: "https://every.to"
+    feed: "https://every.to/feed.xml"
+    x: null
+    tags: ["ai"]
+    tier: 3
+    note: "RSS要確認"
+    verified: false
+  - id: "stratechery-daily-update"
+    name: "Stratechery Daily Update（無料分）"
+    group: "Q. 第二層（フォロー先の定点）"
+    kind: "rss"
+    lang: "en"
+    url: "https://stratechery.com"
+    feed: "https://stratechery.com/feed/"
+    x: null
+    tags: ["strategy"]
+    tier: 3
+    note: "Cで登録済（重複）"
+    verified: false
+  - id: "日本経済新聞"
+    name: "日本経済新聞（AI・スタートアップ）"
+    group: "Q. 第二層（フォロー先の定点）"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=site%3Anikkei.com%20%E7%94%9F%E6%88%90AI%20%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["ai", "startup"]
+    tier: 2
+    note: "有料。見出しのみ"
+    verified: false
+  - id: "newspicks"
+    name: "NewsPicks（トピックス）"
+    group: "Q. 第二層（フォロー先の定点）"
+    kind: "page"
+    lang: "ja"
+    url: "https://newspicks.com"
+    feed: null
+    x: "NewsPicks"
+    tags: ["business"]
+    tier: 3
+    note: "有料。見出しのみ"
+    verified: false
+  - id: "pivot"
+    name: "PIVOT"
+    group: "Q. 第二層（フォロー先の定点）"
+    kind: "yt"
+    lang: "ja"
+    url: "https://pivotmedia.co.jp"
+    feed: null
+    x: "pivot_inc"
+    tags: ["business"]
+    tier: 3
+    note: ""
+    verified: false
+  - id: "voicy-木下斉-狂犬の本音"
+    name: "Voicy: 木下斉「狂犬の本音」"
+    group: "Q. 第二層（フォロー先の定点）"
+    kind: "page"
+    lang: "ja"
+    url: "https://voicy.jp/channel/2028"
+    feed: null
+    x: null
+    tags: ["local"]
+    tier: 3
+    note: "音声。要約対象外、タイトルのみ"
+    verified: false
+  - id: "日経ビジネス-東洋経済-地方創生"
+    name: "日経ビジネス / 東洋経済 地方創生"
+    group: "Q. 第二層（フォロー先の定点）"
+    kind: "gnews"
+    lang: "ja"
+    url: null
+    feed: "https://news.google.com/rss/search?q=%E5%9C%B0%E6%96%B9%E5%89%B5%E7%94%9F%20site%3Atoyokeizai.net%20OR%20site%3Abusiness.nikkei.com&hl=ja&gl=JP&ceid=JP:ja"
+    x: null
+    tags: ["local"]
+    tier: 3
+    note: ""
+    verified: false
