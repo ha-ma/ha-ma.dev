@@ -40,3 +40,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 日報バッチの実行ログ・ローカル設定
+logs/
+.env.daily
