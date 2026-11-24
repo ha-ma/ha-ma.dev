@@ -442,14 +442,14 @@ sources:
   - id: "a16z"
     name: "a16z（Andreessen Horowitz）"
     group: "C. 著名VC（海外）"
-    kind: "rss"
+    kind: "gnews_en"
     lang: "en"
     url: "https://a16z.com"
-    feed: "https://a16z.com/feed/"
+    feed: "https://news.google.com/rss/search?q=site%3Aa16z.com&hl=en-US&gl=US&ceid=US:en"
     x: "a16z"
     tags: ["vc", "startup"]
     tier: 1
-    note: "記事・ポッドキャスト"
+    note: "RSS取得不可→Googleニュース site:a16z.com（2026-11-24 validate）。記事・ポッドキャスト"
     verified: false
   - id: "marc-andreessen"
     name: "Marc Andreessen"
@@ -719,14 +719,14 @@ sources:
   - id: "all-star-saas-fund"
     name: "ALL STAR SAAS FUND（ブログ）"
     group: "D. VC・投資家（国内）"
-    kind: "rss"
+    kind: "gnews"
     lang: "ja"
     url: "https://blog.allstarsaas.com"
-    feed: null
+    feed: "https://news.google.com/rss/search?q=site%3Ablog.allstarsaas.com&hl=ja&gl=JP&ceid=JP:ja"
     x: "allstarsaasfund"
     tags: ["saas", "vc"]
     tier: 1
-    note: "RSS要確認"
+    note: "RSS取得不可→Googleニュース site:blog.allstarsaas.com（2026-11-24 validate）"
     verified: false
   - id: "前田ヒロ"
     name: "前田ヒロ（ALL STAR SAAS FUND）"
@@ -836,18 +836,6 @@ sources:
     tier: 3
     note: "ハンドル要確認"
     verified: false
-  - id: "startup-hokkaido"
-    name: "STARTUP HOKKAIDO"
-    group: "D. VC・投資家（国内）"
-    kind: "rss"
-    lang: "ja"
-    url: "https://startup-hokkaido.com"
-    feed: null
-    x: "STARTUP_HKD"
-    tags: ["hokkaido", "startup"]
-    tier: 1
-    note: "新着・公募。RSS要確認→ページ差分"
-    verified: false
   - id: "北海道ベンチャ-キャピタル"
     name: "北海道ベンチャーキャピタル"
     group: "D. VC・投資家（国内）"
@@ -858,18 +846,6 @@ sources:
     x: null
     tags: ["hokkaido", "vc"]
     tier: 3
-    note: ""
-    verified: false
-  - id: "さっぽろ産業振興財団-startup-city-sapporo"
-    name: "さっぽろ産業振興財団 / STARTUP CITY SAPPORO"
-    group: "D. VC・投資家（国内）"
-    kind: "page"
-    lang: "ja"
-    url: "https://startup-city-sapporo.com"
-    feed: null
-    x: "StartupSapporo"
-    tags: ["hokkaido", "startup"]
-    tier: 2
     note: ""
     verified: false
   - id: "nomaps"
@@ -984,14 +960,14 @@ sources:
   - id: "jason-liu"
     name: "Jason Liu"
     group: "E. 起業家・経営者（海外）"
-    kind: "rss"
+    kind: "gnews_en"
     lang: "en"
     url: "https://jxnl.co"
-    feed: null
+    feed: "https://news.google.com/rss/search?q=site%3Ajxnl.co&hl=en-US&gl=US&ceid=US:en"
     x: "jxnlco"
     tags: ["ai", "dev"]
     tier: 3
-    note: "RAG・構造化出力"
+    note: "RSS取得不可→Googleニュース site:jxnl.co（2026-11-24 validate）。RAG・構造化出力"
     verified: false
   - id: "chip-huyen"
     name: "Chip Huyen"
@@ -1248,14 +1224,14 @@ sources:
   - id: "dan-shipper"
     name: "Dan Shipper（Every）"
     group: "E. 起業家・経営者（海外）"
-    kind: "rss"
+    kind: "x"
     lang: "en"
     url: "https://every.to"
     feed: null
     x: "danshipper"
     tags: ["ai"]
     tier: 3
-    note: "RSS要確認"
+    note: "Every 本体は id: every で取得。ここは X のみ"
     verified: false
   - id: "casey-newton"
     name: "Casey Newton（Platformer）"
@@ -1417,14 +1393,14 @@ sources:
   - id: "伊藤穰一"
     name: "伊藤穰一（Joi Ito）"
     group: "F. 起業家・AI実務家（国内）"
-    kind: "rss"
+    kind: "gnews"
     lang: "ja"
     url: "https://joi.ito.com"
-    feed: "https://joi.ito.com/jp/feed/"
+    feed: "https://news.google.com/rss/search?q=site%3Ajoi.ito.com&hl=ja&gl=JP&ceid=JP:ja"
     x: "Joi"
     tags: ["ai", "web3"]
     tier: 2
-    note: ""
+    note: "RSS取得不可→Googleニュース site:joi.ito.com（2026-11-24 validate）"
     verified: false
   - id: "孫泰蔵"
     name: "孫泰蔵"
@@ -1621,14 +1597,14 @@ sources:
   - id: "日本ディ-プラ-ニング協会"
     name: "日本ディープラーニング協会（JDLA）"
     group: "F. 起業家・AI実務家（国内）"
-    kind: "page"
+    kind: "gnews"
     lang: "ja"
     url: "https://www.jdla.org"
-    feed: null
+    feed: "https://news.google.com/rss/search?q=site%3Ajdla.org&hl=ja&gl=JP&ceid=JP:ja"
     x: "JDLA_official"
     tags: ["ai"]
     tier: 3
-    note: ""
+    note: "RSS取得不可→Googleニュース site:jdla.org（2026-11-24 validate）"
     verified: false
   - id: "和田卓人"
     name: "和田卓人（t_wada）"
@@ -1766,14 +1742,14 @@ sources:
   - id: "ledge-ai"
     name: "Ledge.ai"
     group: "G. 生成AI・開発メディア"
-    kind: "rss"
+    kind: "gnews"
     lang: "ja"
     url: "https://ledge.ai"
-    feed: "https://ledge.ai/feed/"
+    feed: "https://news.google.com/rss/search?q=site%3Aledge.ai&hl=ja&gl=JP&ceid=JP:ja"
     x: null
     tags: ["ai", "business"]
     tier: 2
-    note: ""
+    note: "RSS取得不可→Googleニュース site:ledge.ai（2026-11-24 validate）"
     verified: false
   - id: "ainow"
     name: "AINOW"
@@ -1935,14 +1911,14 @@ sources:
   - id: "ニッポン移住-交流ナビ-join"
     name: "ニッポン移住・交流ナビ JOIN"
     group: "H. 地方創生・協力隊"
-    kind: "rss"
+    kind: "gnews"
     lang: "ja"
     url: "https://www.iju-join.jp"
-    feed: null
+    feed: "https://news.google.com/rss/search?q=site%3Aiju-join.jp&hl=ja&gl=JP&ceid=JP:ja"
     x: "iju_join"
     tags: ["local", "iju"]
     tier: 1
-    note: "協力隊募集・ニュース。RSS要確認"
+    note: "RSS取得不可→Googleニュース site:iju-join.jp（2026-11-24 validate）"
     verified: false
   - id: "地域おこし協力隊-公式"
     name: "地域おこし協力隊 公式（総務省）"
@@ -1971,14 +1947,14 @@ sources:
   - id: "内閣府-rss"
     name: "内閣府 RSS（新着）"
     group: "H. 地方創生・協力隊"
-    kind: "rss"
+    kind: "gnews"
     lang: "ja"
     url: "https://www.cao.go.jp/rss/index.html"
-    feed: null
+    feed: "https://news.google.com/rss/search?q=site%3Acao.go.jp&hl=ja&gl=JP&ceid=JP:ja"
     x: null
     tags: ["gov"]
     tier: 2
-    note: "RSS一覧ページあり。実装時に該当フィードを選ぶ"
+    note: "RSS取得不可→Googleニュース site:cao.go.jp（2026-11-24 validate）。RSS一覧ページあり。実装時に該当フィードを選ぶ"
     verified: false
   - id: "ふるさと回帰支援センタ"
     name: "ふるさと回帰支援センター"
@@ -2139,38 +2115,38 @@ sources:
   - id: "glocal-mission-times"
     name: "Glocal Mission Times"
     group: "H. 地方創生・協力隊"
-    kind: "rss"
+    kind: "gnews"
     lang: "ja"
     url: "https://www.glocaltimes.jp"
-    feed: "https://www.glocaltimes.jp/feed"
+    feed: "https://news.google.com/rss/search?q=site%3Aglocaltimes.jp&hl=ja&gl=JP&ceid=JP:ja"
     x: null
     tags: ["local", "iju"]
     tier: 3
-    note: ""
+    note: "RSS取得不可→Googleニュース site:glocaltimes.jp（2026-11-24 validate）"
     verified: false
   - id: "自治体通信"
     name: "自治体通信"
     group: "H. 地方創生・協力隊"
-    kind: "rss"
+    kind: "gnews"
     lang: "ja"
     url: "https://www.jt-tsushin.jp"
-    feed: null
+    feed: "https://news.google.com/rss/search?q=site%3Ajt-tsushin.jp&hl=ja&gl=JP&ceid=JP:ja"
     x: null
     tags: ["gov"]
     tier: 2
-    note: "RSS要確認"
+    note: "RSS取得不可→Googleニュース site:jt-tsushin.jp（2026-11-24 validate）"
     verified: false
   - id: "ジチタイワ-クス"
     name: "ジチタイワークス"
     group: "H. 地方創生・協力隊"
-    kind: "rss"
+    kind: "gnews"
     lang: "ja"
     url: "https://jichitai.works"
-    feed: "https://jichitai.works/feed"
+    feed: "https://news.google.com/rss/search?q=site%3Ajichitai.works&hl=ja&gl=JP&ceid=JP:ja"
     x: null
     tags: ["gov"]
     tier: 2
-    note: ""
+    note: "RSS取得不可→Googleニュース site:jichitai.works（2026-11-24 validate）"
     verified: false
   - id: "holg"
     name: "HOLG（Heroes of Local Government）"
@@ -2187,26 +2163,14 @@ sources:
   - id: "月刊事業構想"
     name: "月刊事業構想"
     group: "H. 地方創生・協力隊"
-    kind: "rss"
+    kind: "gnews"
     lang: "ja"
     url: "https://www.projectdesign.jp"
-    feed: "https://www.projectdesign.jp/feed"
+    feed: "https://news.google.com/rss/search?q=site%3Aprojectdesign.jp&hl=ja&gl=JP&ceid=JP:ja"
     x: null
     tags: ["local", "business"]
     tier: 3
-    note: ""
-    verified: false
-  - id: "日経グロ-カル"
-    name: "日経グローカル"
-    group: "H. 地方創生・協力隊"
-    kind: "page"
-    lang: "ja"
-    url: "https://www.nikkei.com/theme/?dw=20070501"
-    feed: null
-    x: null
-    tags: ["local"]
-    tier: 3
-    note: "有料。見出しのみ"
+    note: "RSS取得不可→Googleニュース site:projectdesign.jp（2026-11-24 validate）"
     verified: false
   - id: "googleニュ-ス-地域おこし協力隊"
     name: "Googleニュース: 地域おこし協力隊"
@@ -2392,26 +2356,26 @@ sources:
   - id: "えぞ財団"
     name: "えぞ財団"
     group: "I. 北海道・道東・根室"
-    kind: "rss"
+    kind: "gnews"
     lang: "ja"
     url: "https://ezozaidan.com"
-    feed: null
+    feed: "https://news.google.com/rss/search?q=site%3Aezozaidan.com&hl=ja&gl=JP&ceid=JP:ja"
     x: "ezo_zaidan"
     tags: ["hokkaido", "local"]
     tier: 2
-    note: "北海道の地域メディア・コミュニティ。RSS要確認"
+    note: "RSS取得不可→Googleニュース site:ezozaidan.com（2026-11-24 validate）"
     verified: false
   - id: "domingo"
     name: "Domingo（北海道ローカルメディア）"
     group: "I. 北海道・道東・根室"
-    kind: "rss"
+    kind: "gnews"
     lang: "ja"
     url: "https://domingo.ne.jp"
-    feed: null
+    feed: "https://news.google.com/rss/search?q=site%3Adomingo.ne.jp&hl=ja&gl=JP&ceid=JP:ja"
     x: null
     tags: ["hokkaido"]
     tier: 3
-    note: ""
+    note: "RSS取得不可→Googleニュース site:domingo.ne.jp（2026-11-24 validate）"
     verified: false
   - id: "北海道likers"
     name: "北海道Likers"
@@ -2513,14 +2477,14 @@ sources:
   - id: "国土交通省-報道発表"
     name: "国土交通省 報道発表"
     group: "J. 観光・インバウンド・クルーズ"
-    kind: "rss"
+    kind: "gnews"
     lang: "ja"
     url: "https://www.mlit.go.jp/report/press/"
-    feed: null
+    feed: "https://news.google.com/rss/search?q=site%3Amlit.go.jp%2Freport%2Fpress&hl=ja&gl=JP&ceid=JP:ja"
     x: "MLIT_JAPAN"
     tags: ["gov", "tourism"]
     tier: 2
-    note: "RSS要確認（港湾局クルーズ）"
+    note: "RSS取得不可→Googleニュース site:mlit.go.jp/report/press（2026-11-24 validate）"
     verified: false
   - id: "国交省-港湾局-クル-ズ振興"
     name: "国交省 港湾局 クルーズ振興"
@@ -2582,29 +2546,17 @@ sources:
     tier: 2
     note: ""
     verified: false
-  - id: "トラベルジャ-ナル"
-    name: "トラベルジャーナル"
-    group: "J. 観光・インバウンド・クルーズ"
-    kind: "page"
-    lang: "ja"
-    url: "https://www.tjnet.co.jp"
-    feed: null
-    x: null
-    tags: ["tourism"]
-    tier: 3
-    note: ""
-    verified: false
   - id: "jtb総合研究所"
     name: "JTB総合研究所"
     group: "J. 観光・インバウンド・クルーズ"
-    kind: "rss"
+    kind: "gnews"
     lang: "ja"
     url: "https://www.tourism.jp"
-    feed: "https://www.tourism.jp/feed/"
+    feed: "https://news.google.com/rss/search?q=site%3Atourism.jp&hl=ja&gl=JP&ceid=JP:ja"
     x: null
     tags: ["tourism"]
     tier: 3
-    note: ""
+    note: "RSS取得不可→Googleニュース site:tourism.jp（2026-11-24 validate）"
     verified: false
   - id: "星野リゾ-ト"
     name: "星野リゾート（星野佳路の発言）"
@@ -2645,14 +2597,14 @@ sources:
   - id: "airbnb-newsroom"
     name: "Airbnb Newsroom"
     group: "J. 観光・インバウンド・クルーズ"
-    kind: "rss"
+    kind: "gnews_en"
     lang: "en"
     url: "https://news.airbnb.com"
-    feed: "https://news.airbnb.com/feed/"
+    feed: "https://news.google.com/rss/search?q=site%3Anews.airbnb.com&hl=en-US&gl=US&ceid=US:en"
     x: "Airbnb"
     tags: ["tourism"]
     tier: 3
-    note: "体験（Experiences）"
+    note: "RSS取得不可→Googleニュース site:news.airbnb.com（2026-11-24 validate）。体験（Experiences）"
     verified: false
   - id: "skift"
     name: "Skift"
@@ -2754,14 +2706,14 @@ sources:
   - id: "障害者ドットコム"
     name: "障害者ドットコム"
     group: "K. 福祉"
-    kind: "rss"
+    kind: "gnews"
     lang: "ja"
     url: "https://shohgaisha.com"
-    feed: null
+    feed: "https://news.google.com/rss/search?q=site%3Ashohgaisha.com&hl=ja&gl=JP&ceid=JP:ja"
     x: null
     tags: ["welfare"]
     tier: 3
-    note: "RSS要確認"
+    note: "RSS取得不可→Googleニュース site:shohgaisha.com（2026-11-24 validate）"
     verified: false
   - id: "joint-介護-福祉ニュ-ス"
     name: "JOINT 介護・福祉ニュース"
@@ -2899,26 +2851,14 @@ sources:
   - id: "教育新聞"
     name: "教育新聞"
     group: "L. 教育"
-    kind: "rss"
+    kind: "gnews"
     lang: "ja"
     url: "https://www.kyobun.co.jp"
-    feed: "https://www.kyobun.co.jp/feed/"
+    feed: "https://news.google.com/rss/search?q=site%3Akyobun.co.jp&hl=ja&gl=JP&ceid=JP:ja"
     x: null
     tags: ["education"]
     tier: 2
-    note: "有料記事多い"
-    verified: false
-  - id: "edtechzine"
-    name: "EdTechZine"
-    group: "L. 教育"
-    kind: "rss"
-    lang: "ja"
-    url: "https://edtechzine.jp"
-    feed: "https://edtechzine.jp/rss/new.xml"
-    x: null
-    tags: ["education", "edtech"]
-    tier: 1
-    note: ""
+    note: "RSS取得不可→Googleニュース site:kyobun.co.jp（2026-11-24 validate）。有料記事多い"
     verified: false
   - id: "リセマム"
     name: "リセマム"
@@ -3140,14 +3080,14 @@ sources:
   - id: "rolling-stone-japan"
     name: "Rolling Stone Japan"
     group: "M. 音楽"
-    kind: "rss"
+    kind: "gnews"
     lang: "ja"
     url: "https://rollingstonejapan.com"
-    feed: "https://rollingstonejapan.com/feed/"
+    feed: "https://news.google.com/rss/search?q=site%3Arollingstonejapan.com&hl=ja&gl=JP&ceid=JP:ja"
     x: null
     tags: ["music"]
     tier: 2
-    note: "RSS要確認"
+    note: "RSS取得不可→Googleニュース site:rollingstonejapan.com（2026-11-24 validate）"
     verified: false
   - id: "real-sound"
     name: "Real Sound"
@@ -3184,18 +3124,6 @@ sources:
     tags: ["music", "jazz"]
     tier: 3
     note: "RSS要確認"
-    verified: false
-  - id: "jazz-japan"
-    name: "JaZZ JAPAN"
-    group: "M. 音楽"
-    kind: "page"
-    lang: "ja"
-    url: "https://jazzjapan.co.jp"
-    feed: null
-    x: null
-    tags: ["jazz"]
-    tier: 2
-    note: ""
     verified: false
   - id: "arban"
     name: "ARBAN"
@@ -3416,14 +3344,14 @@ sources:
   - id: "bandcamp-daily"
     name: "Bandcamp Daily"
     group: "M. 音楽"
-    kind: "rss"
+    kind: "gnews_en"
     lang: "en"
     url: "https://daily.bandcamp.com"
-    feed: "https://daily.bandcamp.com/feed"
+    feed: "https://news.google.com/rss/search?q=site%3Adaily.bandcamp.com&hl=en-US&gl=US&ceid=US:en"
     x: null
     tags: ["music"]
     tier: 3
-    note: ""
+    note: "RSS取得不可→Googleニュース site:daily.bandcamp.com（2026-11-24 validate）"
     verified: false
   - id: "npr-music"
     name: "NPR Music（Tiny Desk）"
@@ -3513,14 +3441,14 @@ sources:
   - id: "j-lis"
     name: "J-LIS（地方公共団体情報システム機構）"
     group: "N. 行政DX・GovTech"
-    kind: "page"
+    kind: "gnews"
     lang: "ja"
     url: "https://www.j-lis.go.jp"
-    feed: null
+    feed: "https://news.google.com/rss/search?q=site%3Aj-lis.go.jp&hl=ja&gl=JP&ceid=JP:ja"
     x: null
     tags: ["gov", "dx"]
     tier: 3
-    note: ""
+    note: "RSS取得不可→Googleニュース site:j-lis.go.jp（2026-11-24 validate）"
     verified: false
   - id: "code-for-japan"
     name: "Code for Japan"
@@ -3610,14 +3538,14 @@ sources:
   - id: "j-net21-支援情報ヘッドライン"
     name: "J-Net21 支援情報ヘッドライン"
     group: "O. 補助金・公募"
-    kind: "rss"
+    kind: "gnews"
     lang: "ja"
     url: "https://j-net21.smrj.go.jp/snavi/"
-    feed: "https://j-net21.smrj.go.jp/snavi/rss.xml"
+    feed: "https://news.google.com/rss/search?q=site%3Aj-net21.smrj.go.jp%2Fsnavi&hl=ja&gl=JP&ceid=JP:ja"
     x: null
     tags: ["subsidy"]
     tier: 1
-    note: "北海道で絞り込み可。RSS要確認"
+    note: "RSS取得不可→Googleニュース site:j-net21.smrj.go.jp/snavi（2026-11-24 validate）"
     verified: false
   - id: "ミラサポplus"
     name: "ミラサポplus"
@@ -3646,26 +3574,26 @@ sources:
   - id: "補助金ポ-タル"
     name: "補助金ポータル"
     group: "O. 補助金・公募"
-    kind: "rss"
+    kind: "gnews"
     lang: "ja"
     url: "https://hojyokin-portal.jp"
-    feed: "https://hojyokin-portal.jp/feed"
+    feed: "https://news.google.com/rss/search?q=site%3Ahojyokin-portal.jp&hl=ja&gl=JP&ceid=JP:ja"
     x: null
     tags: ["subsidy"]
     tier: 3
-    note: ""
+    note: "RSS取得不可→Googleニュース site:hojyokin-portal.jp（2026-11-24 validate）"
     verified: false
   - id: "環境省-報道発表"
     name: "環境省 報道発表"
     group: "O. 補助金・公募"
-    kind: "rss"
+    kind: "gnews"
     lang: "ja"
     url: "https://www.env.go.jp/press/"
-    feed: null
+    feed: "https://news.google.com/rss/search?q=site%3Aenv.go.jp%2Fpress&hl=ja&gl=JP&ceid=JP:ja"
     x: "Kankyo_Jpn"
     tags: ["gov", "sdgs"]
     tier: 2
-    note: "RSS要確認。道東SDGs"
+    note: "RSS取得不可→Googleニュース site:env.go.jp/press（2026-11-24 validate）"
     verified: false
   - id: "農林水産省-水産庁-報道発表"
     name: "農林水産省 / 水産庁 報道発表"
@@ -3728,18 +3656,6 @@ sources:
     tier: 1
     note: ""
     verified: false
-  - id: "eczine"
-    name: "ECzine"
-    group: "P. EC・小売"
-    kind: "rss"
-    lang: "ja"
-    url: "https://eczine.jp"
-    feed: "https://eczine.jp/rss/new.xml"
-    x: null
-    tags: ["ec"]
-    tier: 2
-    note: ""
-    verified: false
   - id: "ecのミカタ"
     name: "ECのミカタ"
     group: "P. EC・小売"
@@ -3767,26 +3683,26 @@ sources:
   - id: "日本ネット経済新聞"
     name: "日本ネット経済新聞"
     group: "P. EC・小売"
-    kind: "rss"
+    kind: "gnews"
     lang: "ja"
     url: "https://netkeizai.com"
-    feed: "https://netkeizai.com/feed"
+    feed: "https://news.google.com/rss/search?q=site%3Anetkeizai.com&hl=ja&gl=JP&ceid=JP:ja"
     x: null
     tags: ["ec"]
     tier: 3
-    note: ""
+    note: "RSS取得不可→Googleニュース site:netkeizai.com（2026-11-24 validate）"
     verified: false
   - id: "shopify-japan-blog"
     name: "Shopify Japan Blog"
     group: "P. EC・小売"
-    kind: "rss"
+    kind: "gnews"
     lang: "ja"
     url: "https://www.shopify.com/jp/blog"
-    feed: "https://www.shopify.com/jp/blog.atom"
+    feed: "https://news.google.com/rss/search?q=site%3Ashopify.com%2Fjp%2Fblog&hl=ja&gl=JP&ceid=JP:ja"
     x: "ShopifyJP"
     tags: ["ec"]
     tier: 2
-    note: ""
+    note: "RSS取得不可→Googleニュース site:shopify.com/jp/blog（2026-11-24 validate）"
     verified: false
   - id: "googleニュ-ス-shopify-日本"
     name: "Googleニュース: Shopify 日本"
@@ -3890,8 +3806,8 @@ sources:
     group: "Q. 第二層（フォロー先の定点）"
     kind: "yt"
     lang: "en"
-    url: "https://www.allin.com"
-    feed: null
+    url: "https://www.youtube.com/@allin"
+    feed: "https://www.youtube.com/feeds/videos.xml?channel_id=UCESLZhusAkFfsNsApnjF_Cg"
     x: "theallinpod"
     tags: ["vc"]
     tier: 3
@@ -3900,14 +3816,14 @@ sources:
   - id: "every"
     name: "Every（Chain of Thought 等）"
     group: "Q. 第二層（フォロー先の定点）"
-    kind: "rss"
+    kind: "gnews_en"
     lang: "en"
     url: "https://every.to"
-    feed: "https://every.to/feed.xml"
+    feed: "https://news.google.com/rss/search?q=site%3Aevery.to&hl=en-US&gl=US&ceid=US:en"
     x: null
     tags: ["ai"]
     tier: 3
-    note: "RSS要確認"
+    note: "RSS取得不可→Googleニュース site:every.to（2026-11-24 validate）"
     verified: false
   - id: "stratechery-daily-update"
     name: "Stratechery Daily Update（無料分）"
@@ -3950,8 +3866,8 @@ sources:
     group: "Q. 第二層（フォロー先の定点）"
     kind: "yt"
     lang: "ja"
-    url: "https://pivotmedia.co.jp"
-    feed: null
+    url: "https://www.youtube.com/@pivot00"
+    feed: "https://www.youtube.com/feeds/videos.xml?channel_id=UC8yHePe_RgUBE-waRWy6olw"
     x: "pivot_inc"
     tags: ["business"]
     tier: 3

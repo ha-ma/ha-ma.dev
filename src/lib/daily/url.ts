@@ -99,3 +99,24 @@ export function discoverFeedLinks(html: string, baseUrl: string): string[] {
   }
   return out;
 }
+
+/**
+ * YouTube のチャンネルページ（@handle）の HTML から channel_id（UC…）を取り出す。
+ * ページ自身を指す canonical / og:url / RSS リンク / externalId を優先し、
+ * 関連チャンネルの ID が混ざりうる "channelId" は最後の手段にする。
+ */
+export function extractYouTubeChannelId(html: string): string | null {
+  const patterns = [
+    /<link\s+rel="canonical"\s+href="https:\/\/www\.youtube\.com\/channel\/(UC[\w-]{22})"/,
+    /<meta\s+property="og:url"\s+content="https:\/\/www\.youtube\.com\/channel\/(UC[\w-]{22})"/,
+    /feeds\/videos\.xml\?channel_id=(UC[\w-]{22})/,
+    /"externalId":"(UC[\w-]{22})"/,
+    /<meta\s+itemprop="identifier"\s+content="(UC[\w-]{22})"/,
+    /"channelId":"(UC[\w-]{22})"/,
+  ];
+  for (const re of patterns) {
+    const m = html.match(re);
+    if (m) return m[1];
+  }
+  return null;
+}

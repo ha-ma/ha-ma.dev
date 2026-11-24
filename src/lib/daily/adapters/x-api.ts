@@ -109,7 +109,8 @@ export function createXApiAdapter(opts: XApiOptions): Adapter {
         if (!mt) break;
       }
       map = { fetched_at: new Date().toISOString(), users };
-      if (!opts.dryRun) await opts.db.from("daily_settings").upsert({ key: "x_user_map", value: map as never }, { onConflict: "key" });
+      // 対応表は出力ではなくキャッシュ。dry でも保存する（直後の本番でメンバー一覧を再取得・再課金しないため）
+      await opts.db.from("daily_settings").upsert({ key: "x_user_map", value: map as never }, { onConflict: "key" });
       log(`[x] リストのメンバー ${userReads} 人を取得（対応表を更新）`);
     }
 

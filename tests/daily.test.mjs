@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { canonicalize, decodeGoogleNewsUrl, discoverFeedLinks, firstExternalUrl } from "../src/lib/daily/url.ts";
+import { canonicalize, decodeGoogleNewsUrl, discoverFeedLinks, extractYouTubeChannelId, firstExternalUrl } from "../src/lib/daily/url.ts";
 import { findBlockedTerms, maskBlockedTerms, normalizeForMatch } from "../src/lib/daily/guard.ts";
 import { extractArticleText, stripHtml, truncate } from "../src/lib/daily/text.ts";
 import { parseJson } from "../src/lib/daily/llm.ts";
@@ -84,4 +84,14 @@ test("oauth1Header: X の公式ドキュメントの例と同じ署名になる"
     "1318622958",
   );
   assert.match(h, /oauth_signature="hCtSmYh%2BiHYCEqBWrE7C7hYmtUk%3D"/);
+});
+
+test("extractYouTubeChannelId: canonical を優先し、関連チャンネルの channelId に引っ張られない", () => {
+  const own = "UC8yHePe_RgUBE-waRWy6olw";
+  const other = "UCnuJEgRFwy8BNZiJEr8ewyQ";
+  const html = `<script>{"channelId":"${other}"}</script><link rel="canonical" href="https://www.youtube.com/channel/${own}">`;
+  assert.equal(extractYouTubeChannelId(html), own);
+  assert.equal(extractYouTubeChannelId(`{"externalId":"${own}"}`), own);
+  assert.equal(extractYouTubeChannelId(`{"channelId":"${own}"}`), own);
+  assert.equal(extractYouTubeChannelId("<html></html>"), null);
 });

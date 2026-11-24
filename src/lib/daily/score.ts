@@ -3,7 +3,7 @@ import { DAILY_TAGS } from "@/types/database";
 import type { ScoreResult, Usage } from "@/lib/daily/types";
 import { SCORE_BATCH } from "@/lib/daily/types";
 import { askJson, DEFAULT_MODEL_SCORE, estimateCostUsd, newUsage } from "@/lib/daily/llm";
-import { scoreSystem, scoreUser } from "@/lib/daily/prompts";
+import { SCORE_SCHEMA, scoreSystem, scoreUser } from "@/lib/daily/prompts";
 import { getBlockedTerms, getInterestProfile, getSettings, pool, recordStage, settingString, type Db, type Logger } from "@/lib/daily/common";
 
 export type ScoreOptions = { db: Db; runDate: string; log?: Logger; dryRun?: boolean; model?: string };
@@ -35,7 +35,7 @@ export async function score(opts: ScoreOptions): Promise<ScoreSummary> {
     const user = scoreUser(batch.map((it) => ({ id: it.id, title: it.title, source: it.sources?.name ?? it.source_id, excerpt: it.excerpt, lang: it.lang })));
     let results: ScoreResult[] = [];
     try {
-      results = await withRetry(() => askJson<ScoreResult[]>({ model, system, user, usage, maxTokens: 3000 }), 3);
+      results = (await withRetry(() => askJson<{ items: ScoreResult[] }>({ model, system, user, usage, maxTokens: 8000, schema: SCORE_SCHEMA }), 3)).items ?? [];
     } catch (e) {
       failed += batch.length;
       log(`[score] batch ${bi} 失敗: ${e instanceof Error ? e.message : e}`);
