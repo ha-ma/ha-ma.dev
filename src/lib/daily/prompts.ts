@@ -13,7 +13,7 @@ export function scoreSystem(profile: string, blocked: string[]): string {
 ${profile}
 
 # 出力
-JSON 配列のみを返す。各要素: {"id": string, "score": 0-100 の整数, "reason": 1文(40字以内), "cluster_key": 同じ話題をまとめる短い日本語キー(10字以内), "tags": [${DAILY_TAGS.map((t) => `"${t}"`).join(", ")} のうち該当するもの]}
+JSON のみを返す: {"items": [各記事の採点]}。各要素: {"id": string, "score": 0-100 の整数, "reason": 1文(40字以内), "cluster_key": 同じ話題をまとめる短い日本語キー(10字以内), "tags": [${DAILY_TAGS.map((t) => `"${t}"`).join(", ")} のうち該当するもの]}
 - score 80以上: 濵屋の事業や地域に直接関わる、または今日コメントしたくなる一次情報
 - score 50-79: 関心領域だが一般的、あるいは二次情報
 - score 30未満: 無関係・宣伝・求人・個人的な雑談
@@ -21,6 +21,38 @@ JSON 配列のみを返す。各要素: {"id": string, "score": 0-100 の整数,
 - 英語の記事も日本語で reason を書く
 ${blocked.length ? `- 次の語に触れる記事は、reason にその語を書かない: ${blocked.join("、")}` : ""}`;
 }
+
+/** 採点結果の JSON スキーマ（構造化出力用） */
+export const SCORE_SCHEMA = {
+  type: "object",
+  properties: {
+    items: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          id: { type: "string" },
+          score: { type: "integer" },
+          reason: { type: "string" },
+          cluster_key: { type: "string" },
+          tags: { type: "array", items: { type: "string", enum: [...DAILY_TAGS] } },
+        },
+        required: ["id", "score", "reason", "cluster_key", "tags"],
+        additionalProperties: false,
+      },
+    },
+  },
+  required: ["items"],
+  additionalProperties: false,
+};
+
+/** 要約結果の JSON スキーマ（構造化出力用） */
+export const DIGEST_SCHEMA = {
+  type: "object",
+  properties: { summary: { type: "string" }, angle: { type: "string" } },
+  required: ["summary", "angle"],
+  additionalProperties: false,
+};
 
 export function scoreUser(items: { id: string; title: string; source: string; excerpt: string; lang: string }[]): string {
   return items.map((it, i) => `## ${i + 1}\nid: ${it.id}\nsource: ${it.source}\ntitle: ${it.title}\nexcerpt: ${it.excerpt.replace(/\s+/g, " ").slice(0, 300)}`).join("\n\n");

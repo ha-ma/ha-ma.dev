@@ -5,9 +5,9 @@ import type { Usage } from "@/lib/daily/types";
 export const DEFAULT_MODEL_SCORE = process.env.DAILY_MODEL_SCORE || "claude-haiku-5-5";
 export const DEFAULT_MODEL_DIGEST = process.env.DAILY_MODEL_DIGEST || "claude-haiku-5-5";
 
-/** 概算単価（USD / 100万トークン）。実装時に料金表で更新する。DAILY_PRICE_IN / DAILY_PRICE_OUT で上書き可 */
-const PRICE_IN = Number(process.env.DAILY_PRICE_IN ?? 1);
-const PRICE_OUT = Number(process.env.DAILY_PRICE_OUT ?? 5);
+/** 概算単価（USD / 100万トークン）。既定は Claude Haiku 5.5（10万トークン以下のプロンプト）。DAILY_PRICE_IN / DAILY_PRICE_OUT で上書き可 */
+const PRICE_IN = Number(process.env.DAILY_PRICE_IN ?? 0.1);
+const PRICE_OUT = Number(process.env.DAILY_PRICE_OUT ?? 0.5);
 
 export function estimateCostUsd(u: Usage): number {
   return (u.input * PRICE_IN + u.output * PRICE_OUT) / 1_000_000;
@@ -21,16 +21,23 @@ function getClient() {
 }
 
 /** JSON を返すプロンプトを投げ、パースして返す。usage に加算する */
-export async function askJson<T>(opts: { model: string; system: string; user: string; maxTokens?: number; usage: Usage }): Promise<T> {
+/**
+ * schema を渡すと構造化出力（output_config.format）で JSON の形を API 側で保証する。
+ * 思考トークンも max_tokens に含まれるので、上限は余裕を持たせる（途中で切れたらエラーにする）。
+ */
+export async function askJson<T>(opts: { model: string; system: string; user: string; maxTokens?: number; usage: Usage; schema?: Record<string, unknown> }): Promise<T> {
   const res = await getClient().messages.create({
     model: opts.model,
-    max_tokens: opts.maxTokens ?? 4000,
+    max_tokens: opts.maxTokens ?? 8000,
     system: opts.system,
     messages: [{ role: "user", content: opts.user }],
+    ...(opts.schema ? { output_config: { format: { type: "json_schema" as const, schema: opts.schema } } } : {}),
   });
   opts.usage.input += res.usage.input_tokens;
   opts.usage.output += res.usage.output_tokens;
   opts.usage.calls += 1;
+  if (res.stop_reason === "max_tokens") throw new Error(`出力が max_tokens（${opts.maxTokens ?? 8000}）で途中終了しました`);
+  if (res.stop_reason === "refusal") throw new Error("モデルが応答を拒否しました");
   const text = res.content
     .filter((b): b is Anthropic.TextBlock => b.type === "text")
     .map((b) => b.text)

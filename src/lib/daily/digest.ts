@@ -2,7 +2,7 @@ import type { DailyItem } from "@/types/database";
 import type { DigestResult, Usage } from "@/lib/daily/types";
 import { BODY_CHARS, DEFAULT_DIGEST_SIZE, PER_SOURCE_CAP } from "@/lib/daily/types";
 import { askJson, DEFAULT_MODEL_DIGEST, estimateCostUsd, newUsage } from "@/lib/daily/llm";
-import { digestSystem, digestUser } from "@/lib/daily/prompts";
+import { DIGEST_SCHEMA, digestSystem, digestUser } from "@/lib/daily/prompts";
 import { extractArticleText, truncate } from "@/lib/daily/text";
 import { maskBlockedTerms } from "@/lib/daily/guard";
 import { fetchText, getBlockedTerms, getSettings, pool, recordStage, settingNumber, settingString, type Db, type Logger } from "@/lib/daily/common";
@@ -75,7 +75,7 @@ export async function digest(opts: DigestOptions): Promise<DigestSummary> {
     let result: DigestResult = { summary: it.excerpt, angle: "" };
     try {
       result = await withRetry(
-        () => askJson<DigestResult>({ model, system, user: digestUser({ title: it.title, source: it.sources?.name ?? it.source_id, url: it.url, body }), usage, maxTokens: 800 }),
+        () => askJson<DigestResult>({ model, system, user: digestUser({ title: it.title, source: it.sources?.name ?? it.source_id, url: it.url, body }), usage, maxTokens: 4000, schema: DIGEST_SCHEMA }),
         3,
       );
     } catch (e) {
