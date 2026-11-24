@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { canonicalize, decodeGoogleNewsUrl, firstExternalUrl } from "../src/lib/daily/url.ts";
+import { canonicalize, decodeGoogleNewsUrl, discoverFeedLinks, firstExternalUrl } from "../src/lib/daily/url.ts";
 import { findBlockedTerms, maskBlockedTerms, normalizeForMatch } from "../src/lib/daily/guard.ts";
 import { extractArticleText, stripHtml, truncate } from "../src/lib/daily/text.ts";
 import { parseJson } from "../src/lib/daily/llm.ts";
@@ -56,4 +56,14 @@ test("日付: JST で日付・ラベルを作る", () => {
   assert.equal(jstDate(new Date("2026-11-17T14:59:00Z")), "2026-11-17"); // 23:59 JST
   assert.equal(jstLabel("2026-11-18"), "11/18（水）");
   assert.equal(jstLong("2026-11-18"), "2026年11月18日");
+});
+
+test("discoverFeedLinks: link タグからフィード URL を取り出す（コメントフィードは除く）", async () => {
+  const html = `<html><head>
+    <link rel="stylesheet" href="/a.css">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+    <link rel="alternate" type="application/rss+xml" href="https://example.com/comments/feed/">
+    <link type="application/atom+xml" rel="alternate" href="https://example.com/atom.xml?a=1&amp;b=2">
+  </head></html>`;
+  assert.deepEqual(discoverFeedLinks(html, "https://example.com/blog/"), ["https://example.com/feed.xml", "https://example.com/atom.xml?a=1&b=2"]);
 });

@@ -43,6 +43,13 @@ export async function seedSources(db: Db, file: string, log: (m: string) => void
       note: s.note ?? "",
     };
   });
+  // 取得できている既存ソースのフィード URL は保持する（自動発見や管理画面での修正を yaml で上書きしない）
+  const { data: existing } = await db.from("sources").select("id, feed, last_status");
+  const keep = new Map((existing ?? []).filter((e) => e.feed && (e.last_status === "ok" || e.last_status === "empty")).map((e) => [e.id, e.feed]));
+  for (const r of rows) {
+    const k = keep.get(r.id);
+    if (k) r.feed = k;
+  }
   // enabled / selector / fail_count などは触らない: 指定した列だけ更新する
   const { error } = await db.from("sources").upsert(rows, { onConflict: "id" });
   if (error) throw new Error(`sources の投入に失敗: ${error.message}`);

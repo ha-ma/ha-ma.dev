@@ -76,6 +76,7 @@ export async function collect(opts: CollectOptions): Promise<CollectSummary> {
         .from("sources")
         .update({
           last_fetched_at: new Date().toISOString(),
+          ...(res.feed ? { feed: res.feed } : {}),
           last_status: res.status,
           last_error: res.status === "error" ? (res.error ?? "").slice(0, 500) : null,
           fail_count: res.status === "error" ? src.fail_count + 1 : 0,

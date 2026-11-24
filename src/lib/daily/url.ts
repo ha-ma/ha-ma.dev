@@ -78,3 +78,24 @@ export function isGoogleNewsUrl(url: string): boolean {
     return false;
   }
 }
+
+/** HTML 内の <link rel="alternate" type="application/rss+xml|atom+xml"> からフィード URL を取り出す */
+export function discoverFeedLinks(html: string, baseUrl: string): string[] {
+  const out: string[] = [];
+  const re = /<link\b[^>]*>/gi;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(html)) !== null) {
+    const tag = m[0];
+    if (!/rel=["']?alternate/i.test(tag)) continue;
+    if (!/type=["']?application\/(rss|atom)\+xml/i.test(tag)) continue;
+    const href = tag.match(/href=["']([^"']+)["']/i)?.[1];
+    if (!href) continue;
+    try {
+      const abs = new URL(href.replace(/&amp;/g, "&"), baseUrl).toString();
+      if (!/comments/i.test(abs) && !out.includes(abs)) out.push(abs);
+    } catch {
+      /* skip */
+    }
+  }
+  return out;
+}

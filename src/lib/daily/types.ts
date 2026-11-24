@@ -10,7 +10,7 @@ export type RawItem = {
   lang?: string;
 };
 
-export type AdapterResult = { items: RawItem[]; status: "ok" | "empty" | "error"; error?: string };
+export type AdapterResult = { items: RawItem[]; status: "ok" | "empty" | "error"; error?: string; /** 自動発見したフィード URL（呼び出し側が sources.feed に保存する） */ feed?: string };
 
 export type Adapter = (source: Source, ctx: AdapterContext) => Promise<AdapterResult>;
 
