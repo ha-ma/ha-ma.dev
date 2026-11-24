@@ -107,7 +107,7 @@ export function BlockedTermsForm({ terms }: { terms: BlockedTerm[] }) {
   );
 }
 
-export function DailySettingsForm({ values: v }: { values: { mail_to: string; x_list_url: string; digest_size: number; model_score: string; model_digest: string } }) {
+export function DailySettingsForm({ values: v }: { values: { mail_to: string; x_list_url: string; digest_size: number; x_daily_cap: number; model_score: string; model_digest: string } }) {
   const [state, action, pending] = useActionState(saveDailySettings, { status: "idle" } as ProfileState);
   return (
     <form action={action} className="grid gap-4 rounded-[10px] border border-line bg-white p-5 md:grid-cols-2">
@@ -117,8 +117,11 @@ export function DailySettingsForm({ values: v }: { values: { mail_to: string; x_
       <Field label="朝のメールの宛先" name="mail_to" hint="カンマ区切りで複数可">
         <input id="mail_to" name="mail_to" defaultValue={v.mail_to} className={inputCls} />
       </Field>
-      <Field label="Xリストの URL" name="x_list_url" hint="x.com/i/lists/… 。Mac mini がこのリストを読みます">
+      <Field label="Xリストの URL" name="x_list_url" hint="x.com/i/lists/… 。公式 API でこのリストを読みます。空欄で X を無効化">
         <input id="x_list_url" name="x_list_url" defaultValue={v.x_list_url} className={inputCls} placeholder="https://x.com/i/lists/..." />
+      </Field>
+      <Field label="X の1日の読み取り上限（件）" name="x_daily_cap" hint={`1件 $0.005。${v.x_daily_cap}件/日で月およそ $${(v.x_daily_cap * 30 * 0.005).toFixed(1)}。0 で無効`}>
+        <input id="x_daily_cap" name="x_daily_cap" type="number" min={0} max={500} defaultValue={v.x_daily_cap} className={inputCls} />
       </Field>
       <Field label="1日の件数" name="digest_size">
         <input id="digest_size" name="digest_size" type="number" min={3} max={30} defaultValue={v.digest_size} className={inputCls} />

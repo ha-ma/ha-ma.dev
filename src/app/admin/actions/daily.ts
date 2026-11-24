@@ -187,6 +187,7 @@ const dailySettingsSchema = z.object({
   mail_to: z.string().max(300),
   x_list_url: z.string().max(300),
   digest_size: z.coerce.number().int().min(3).max(30),
+  x_daily_cap: z.coerce.number().int().min(0).max(500),
   model_score: z.string().max(80),
   model_digest: z.string().max(80),
 });
@@ -200,6 +201,7 @@ export async function saveDailySettings(_prev: ProfileState, fd: FormData): Prom
     { key: "mail_to", value: v.mail_to.trim() },
     { key: "x_list_url", value: v.x_list_url.trim() },
     { key: "digest_size", value: v.digest_size },
+    { key: "x_daily_cap", value: v.x_daily_cap },
     { key: "model_score", value: v.model_score.trim() },
     { key: "model_digest", value: v.model_digest.trim() },
   ];

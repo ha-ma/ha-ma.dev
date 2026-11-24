@@ -67,3 +67,21 @@ test("discoverFeedLinks: link タグからフィード URL を取り出す（コ
   </head></html>`;
   assert.deepEqual(discoverFeedLinks(html, "https://example.com/blog/"), ["https://example.com/feed.xml", "https://example.com/atom.xml?a=1&b=2"]);
 });
+
+test("oauth1Header: X の公式ドキュメントの例と同じ署名になる", async () => {
+  const { oauth1Header } = await import("../src/lib/daily/oauth1.ts");
+  const h = oauth1Header(
+    "POST",
+    "https://api.twitter.com/1.1/statuses/update.json",
+    { status: "Hello Ladies + Gentlemen, a signed OAuth request!", include_entities: "true" },
+    {
+      apiKey: "xvz1evFS4wEEPTGEFPHBog",
+      apiSecret: "kAcSOqF21Fu85e7zjz7ZN2U4ZRhfV3WpwPAoE3Z7kBw",
+      accessToken: "370773112-GmHxMAgYyLbNEtIKZeRNFsMKPR9EyMZeS9weJAEb",
+      accessSecret: "LswwdoUaIvS8ltyTt5jkRh4J50vUPVVHtR2YPi5kE",
+    },
+    "kYjzVBB8Y0ZFabxSWbWovY3uYSQ2pTgmZeNu2VS4cg",
+    "1318622958",
+  );
+  assert.match(h, /oauth_signature="hCtSmYh%2BiHYCEqBWrE7C7hYmtUk%3D"/);
+});

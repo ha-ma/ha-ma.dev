@@ -18,8 +18,7 @@
     "admin:create": "node scripts/create-admin.mjs",
     "daily": "tsx scripts/daily/index.ts",
     "daily:seed": "tsx scripts/daily/index.ts seed",
-    "daily:validate": "tsx scripts/daily/index.ts validate",
-    "daily:x-login": "tsx scripts/daily/index.ts x-login"
+    "daily:validate": "tsx scripts/daily/index.ts validate"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.10.0",
@@ -51,7 +50,6 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "^16.4.6",
-    "playwright": "^1.65.1",
     "prettier": "^3.9.10",
     "supabase": "^2.122.0",
     "tailwindcss": "^4",
