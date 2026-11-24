@@ -1263,7 +1263,7 @@ sources:
     kind: "rss"
     lang: "en"
     url: "https://www.platformer.news"
-    feed: null
+    feed: "https://www.platformer.news/rss/"
     x: "CaseyNewton"
     tags: ["ai"]
     tier: 3
@@ -1525,7 +1525,7 @@ sources:
   - id: "中島聡"
     name: "中島聡（Life is beautiful）"
     group: "F. 起業家・AI実務家（国内）"
-    kind: "rss"
+    kind: "x"
     lang: "ja"
     url: "https://www.mag2.com/m/0001323030"
     feed: null
@@ -2834,18 +2834,6 @@ sources:
     tags: ["welfare", "art"]
     tier: 1
     note: ""
-    verified: false
-  - id: "高浜敏之"
-    name: "高浜敏之（土屋）"
-    group: "K. 福祉"
-    kind: "note"
-    lang: "ja"
-    url: "https://note.com/tsuchiya_group"
-    feed: null
-    x: null
-    tags: ["welfare"]
-    tier: 3
-    note: "noteID要確認"
     verified: false
   - id: "ウェルモ-カイポケ-等-福祉-itニュ-ス"
     name: "ウェルモ / カイポケ 等 福祉×ITニュース"

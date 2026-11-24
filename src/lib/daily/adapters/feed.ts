@@ -2,7 +2,7 @@ import Parser from "rss-parser";
 import type { Adapter, RawItem } from "@/lib/daily/types";
 import { EXCERPT_CHARS } from "@/lib/daily/types";
 import { stripHtml, truncate } from "@/lib/daily/text";
-import { decodeGoogleNewsUrl, isGoogleNewsUrl } from "@/lib/daily/url";
+import { decodeGoogleNewsUrl, discoverFeedLinks, isGoogleNewsUrl } from "@/lib/daily/url";
 
 type FeedItem = {
   title?: string;
@@ -44,8 +44,7 @@ export const feedAdapter: Adapter = async (source, ctx) => {
   const feedUrl = source.feed ?? source.url;
   if (!feedUrl) return { items: [], status: "error", error: "feed/url が未設定" };
   try {
-    const xml = await ctx.fetchText(feedUrl, { headers: { Accept: "application/rss+xml, application/atom+xml, application/xml, text/xml, */*" } });
-    const feed = await parser.parseString(xml);
+    const { feed, discovered } = await loadFeed(feedUrl, ctx.fetchText);
     const items: RawItem[] = [];
     for (const it of feed.items ?? []) {
       const link = (it.link ?? it.guid ?? "").trim();
@@ -78,8 +77,65 @@ export const feedAdapter: Adapter = async (source, ctx) => {
         lang: source.lang,
       });
     }
-    return { items, status: items.length ? "ok" : "empty" };
+    return { items, status: items.length ? "ok" : "empty", feed: discovered };
   } catch (e) {
     return { items: [], status: "error", error: e instanceof Error ? e.message : String(e) };
   }
 };
+
+const FEED_ACCEPT = { headers: { Accept: "application/rss+xml, application/atom+xml, application/xml, text/xml, */*" } };
+const COMMON_FEED_PATHS = ["/feed", "/rss", "/feed.xml", "/rss.xml", "/atom.xml", "/index.xml", "/feed/"];
+
+function looksLikeHtml(text: string): boolean {
+  const head = text.slice(0, 2000).toLowerCase();
+  return head.includes("<!doctype html") || head.includes("<html");
+}
+
+/**
+ * フィードを読む。指定 URL が HTML だった・404 だった場合は、ページ内の link タグと
+ * よくあるパス（/feed, /rss.xml …）からフィードを探す。見つけた URL は discovered で返す。
+ */
+async function loadFeed(feedUrl: string, fetchText: (u: string, init?: RequestInit) => Promise<string>) {
+  let firstError: unknown;
+  let html: string | null = null;
+  try {
+    const text = await fetchText(feedUrl, FEED_ACCEPT);
+    if (!looksLikeHtml(text)) return { feed: await parser.parseString(text), discovered: undefined as string | undefined };
+    html = text;
+    firstError = new Error("フィードではなく HTML が返りました");
+  } catch (e) {
+    firstError = e;
+  }
+  const candidates: string[] = [];
+  let origin: string;
+  try {
+    origin = new URL(feedUrl).origin;
+  } catch {
+    throw firstError;
+  }
+  if (html === null) {
+    // 指定 URL が取れなかった（404 等）。サイトのトップから探す
+    try {
+      const top = await fetchText(origin + "/");
+      if (looksLikeHtml(top)) html = top;
+    } catch {
+      /* ignore */
+    }
+  }
+  if (html) candidates.push(...discoverFeedLinks(html, feedUrl));
+  for (const p of COMMON_FEED_PATHS) candidates.push(origin + p);
+  const tried = new Set([feedUrl]);
+  for (const cand of candidates.slice(0, 8)) {
+    if (tried.has(cand)) continue;
+    tried.add(cand);
+    try {
+      const text = await fetchText(cand, FEED_ACCEPT);
+      if (looksLikeHtml(text)) continue;
+      const feed = await parser.parseString(text);
+      if ((feed.items ?? []).length || feed.title) return { feed, discovered: cand };
+    } catch {
+      /* 次の候補へ */
+    }
+  }
+  throw firstError;
+}

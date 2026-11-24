@@ -37,6 +37,7 @@ export default async function ProfilePage() {
               mail_to: String(settingMap.mail_to ?? ""),
               x_list_url: String(settingMap.x_list_url ?? ""),
               digest_size: Number(settingMap.digest_size ?? 10),
+              x_daily_cap: Number(settingMap.x_daily_cap ?? 30),
               model_score: String(settingMap.model_score ?? ""),
               model_digest: String(settingMap.model_digest ?? ""),
             }}

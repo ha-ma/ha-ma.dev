@@ -16,7 +16,6 @@ mkdir -p ~/apps && cd ~/apps
 git clone <ha-ma.dev のリポジトリURL> ha-ma.dev
 cd ha-ma.dev
 npm ci
-npx playwright install chromium        # X 取得用のブラウザ（初回のみ）
 ```
 
 ## 3. 環境変数（`.env.daily`）
@@ -47,17 +46,25 @@ npm run daily:validate    # 全ソースの到達確認。error / empty を一�
 
 `validate` の結果は `sources.last_status` にも入るので、管理画面 `/admin/sources` で「要差し替え」を確認できる。
 
-## 5. X へのログイン（初回のみ・画面が必要）
+## 5. X（公式 API・従量課金）
+
+X はブラウザの自動操作ではなく、公式 API でリストを読む（自動操作はログイン制限の原因になるため廃止）。
+
+1. https://console.x.com で開発者アカウントを作り、App を1つ作成する
+2. 「Keys and tokens」で次の4つを発行し、`.env.daily` に入れる（Access Token は自分のアカウントのもの。非公開リストも読める）
 
 ```bash
-npm run daily:x-login
+X_API_KEY=
+X_API_SECRET=
+X_ACCESS_TOKEN=
+X_ACCESS_TOKEN_SECRET=
 ```
 
-Chromium が開くので X にログインし、ホームが表示されたらウィンドウを閉じる。
-セッションは `~/.ha-ma-daily/x-profile` に保存され、以後はヘッドレスで動く。
-ログインが切れると収集ログに「X にログインしていません」と出るので、同じコマンドでやり直す。
+3. Developer Console でクレジットを購入する（従量課金。自動チャージは切っておくと上限を超えない）
+4. 管理画面 `/admin/profile` に「Xリストの URL」と「X の1日の読み取り上限」を入れる
 
-管理画面 `/admin/profile` の「Xリストの URL」に `https://x.com/i/lists/…` を入れておくこと。
+費用: 投稿の読み取り1件 $0.005（上限30件/日で月およそ $4.5）。初回と、リストに人を足したあとに、メンバー一覧の取得（1人 $0.010）が1回走る。
+読み取り件数と推定額は毎日 `daily_runs.stages.x` と実行ログの `[x]` 行に残る。リスト URL を空にするか上限を 0 にすると X は無効。
 
 ## 6. 手動で1回動かす
 
@@ -95,6 +102,6 @@ cd ~/apps/ha-ma.dev && git pull && npm ci
 | 症状 | 見るところ |
 |---|---|
 | メールが来ない | `~/Library/Logs/ha-ma-daily/daily.log`、`/admin/daily` の実行記録（daily_runs）、Resend のダッシュボード |
-| X の件数が 0 | ログの `[x]` 行。ログイン切れなら `npm run daily:x-login`。リストURL未設定なら `/admin/profile` |
+| X の件数が 0 | ログの `[x]` 行。401/403 はキーの誤りか権限不足、402/429 はクレジット切れ・上限。リストURL未設定なら `/admin/profile` |
 | 特定ソースだけ error が続く | `/admin/sources` の「要差し替え」。フィードURLを直すか無効化 |
 | AI費が想定より多い | `daily_runs.cost_usd` と `stages.score.usage`。`digest_size` やソースの tier を下げる |

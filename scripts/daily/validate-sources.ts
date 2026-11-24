@@ -32,10 +32,10 @@ export async function validateSources(db: Db, opts: { only?: string; log: (m: st
         const r = await adapter(src, { since, fetchText, log: () => {} });
         status = r.status;
         items = r.items.length;
-        err = r.error ?? "";
+        err = (r.error ?? "").replace(/\s+/g, " ");
         await db
           .from("sources")
-          .update({ last_status: r.status, last_error: err ? err.slice(0, 500) : null })
+          .update({ last_status: r.status, last_error: err ? err.slice(0, 500) : null, ...(r.feed ? { feed: r.feed } : {}) })
           .eq("id", src.id);
       }
     } catch (e) {
@@ -48,9 +48,14 @@ export async function validateSources(db: Db, opts: { only?: string; log: (m: st
 
   const counts = rows.reduce<Record<string, number>>((a, r) => ((a[r.status] = (a[r.status] ?? 0) + 1), a), {});
   opts.log(`---- 合計 ${rows.length} 件 ${JSON.stringify(counts)}`);
-  const bad = rows.filter((r) => r.status === "error" || r.status === "empty");
-  if (bad.length) {
-    opts.log("---- 要差し替え候補（error / empty）");
-    for (const r of bad) opts.log(`${r.status.padEnd(6)} ${r.kind.padEnd(8)} ${r.id}  ${r.error}`);
+  const errors = rows.filter((r) => r.status === "error");
+  const empties = rows.filter((r) => r.status === "empty");
+  if (errors.length) {
+    opts.log("---- 要差し替え候補（error: 取得できない）");
+    for (const r of errors) opts.log(`${r.kind.padEnd(8)} ${r.id}  ${r.error}`);
+  }
+  if (empties.length) {
+    opts.log("---- 参考（empty: 取得はできたが過去14日に新着なし。更新頻度の低いブログなら正常）");
+    opts.log(empties.map((r) => r.id).join(", "));
   }
 }

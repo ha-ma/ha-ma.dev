@@ -26,7 +26,7 @@ export function jstLong(dateStr: string): string {
 
 const UA = "Mozilla/5.0 (compatible; ha-ma.dev daily/1.0; +https://ha-ma.dev)";
 
-/** 文字コードを見てテキスト化する fetch。2MB 超は切り捨て、20秒でタイムアウト */
+/** 文字コードを見てテキスト化する fetch。12MB 超は切り捨て（Substack 等の全文フィードは数MBある）、20秒でタイムアウト */
 export async function fetchText(url: string, init: RequestInit = {}): Promise<string> {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), 20_000);
@@ -38,7 +38,7 @@ export async function fetchText(url: string, init: RequestInit = {}): Promise<st
       headers: { "User-Agent": UA, "Accept-Language": "ja,en;q=0.8", ...(init.headers as Record<string, string> | undefined) },
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const buf = Buffer.from(await res.arrayBuffer()).subarray(0, 2 * 1024 * 1024);
+    const buf = Buffer.from(await res.arrayBuffer()).subarray(0, 12 * 1024 * 1024);
     const ct = res.headers.get("content-type") ?? "";
     let charset = ct.match(/charset=([\w-]+)/i)?.[1];
     if (!charset) {

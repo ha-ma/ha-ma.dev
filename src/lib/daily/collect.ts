@@ -51,6 +51,8 @@ export async function collect(opts: CollectOptions): Promise<CollectSummary> {
       log(`[skip] ${src.id}: kind=${src.kind} のアダプタなし`);
       return;
     }
+    // X はリスト URL が未設定なら静かに飛ばす（X なしで運用する場合に失敗扱いにしない）
+    if (src.kind === "x" && !process.env.X_LIST_URL) return;
     // YouTube: フィード未解決なら @handle から channel_id を引く
     if (src.kind === "yt" && !src.feed && src.url) {
       const feed = await resolveYouTubeFeed(src.url, fetchText);
@@ -76,6 +78,7 @@ export async function collect(opts: CollectOptions): Promise<CollectSummary> {
         .from("sources")
         .update({
           last_fetched_at: new Date().toISOString(),
+          ...(res.feed ? { feed: res.feed } : {}),
           last_status: res.status,
           last_error: res.status === "error" ? (res.error ?? "").slice(0, 500) : null,
           fail_count: res.status === "error" ? src.fail_count + 1 : 0,
