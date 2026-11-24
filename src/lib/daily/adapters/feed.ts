@@ -2,7 +2,7 @@ import Parser from "rss-parser";
 import type { Adapter, RawItem } from "@/lib/daily/types";
 import { EXCERPT_CHARS } from "@/lib/daily/types";
 import { stripHtml, truncate } from "@/lib/daily/text";
-import { decodeGoogleNewsUrl, discoverFeedLinks, isGoogleNewsUrl } from "@/lib/daily/url";
+import { decodeGoogleNewsUrl, discoverFeedLinks, extractYouTubeChannelId, isGoogleNewsUrl } from "@/lib/daily/url";
 
 type FeedItem = {
   title?: string;
@@ -29,8 +29,8 @@ const parser = new Parser<Record<string, unknown>, FeedItem>({
 export async function resolveYouTubeFeed(channelUrl: string, fetchText: (u: string) => Promise<string>): Promise<string | null> {
   try {
     const html = await fetchText(channelUrl);
-    const m = html.match(/"channelId":"(UC[\w-]{20,})"/) ?? html.match(/channel_id=(UC[\w-]{20,})/);
-    return m ? `https://www.youtube.com/feeds/videos.xml?channel_id=${m[1]}` : null;
+    const id = extractYouTubeChannelId(html);
+    return id ? `https://www.youtube.com/feeds/videos.xml?channel_id=${id}` : null;
   } catch {
     return null;
   }

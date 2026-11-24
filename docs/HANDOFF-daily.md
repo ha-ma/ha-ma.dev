@@ -18,24 +18,20 @@
 - Vercel 環境変数: `ANTHROPIC_API_KEY` `CRON_SECRET` `REVALIDATE_SECRET` 設定済み
 - GitHub Actions: keepalive & backup が成功する状態（Secrets 3つ設定済み）
 - Mac mini: clone・`npm ci`・`.env.daily` 作成済み。`npm run daily:seed` 実行済み
-- 管理画面 `/admin/profile`: メール宛先 `yuta.hamaya@amptech.co.jp`、X リスト URL 設定済み
+- 管理画面 `/admin/profile`: メール宛先 `yuta.hamaya@amptech.co.jp` 設定済み。**X リスト URL は DB 上は空（2026-11-24 確認）**。`x_daily_cap` も未保存（既定30で動く）
+- 2026-11-24（Mac mini）: `git pull && npm ci`、`daily:validate`、`collect --dry` 済み。validate の error 39件 → 0件
+  （28件を gnews の `site:` 検索へ、YouTube 2件は channel_id を直書き、dan-shipper は X のみに、DNS 不達・403 の7件を yaml から外した）。
+  `collect --dry`: 323 ソース中 ok 123 / empty 103 / error 0（X は無効のため未実行）
 - X: Developer Console でアプリ `ha-ma.dev_batch` を作成（Pay Per Use）。キー4つを `.env.daily` に設定したはず
 
 ## 残っていること（この順で）
 
-1. **最新を取り込む**: `git pull && npm ci`
-2. **到達確認**: `npm run daily:validate`
-   - 末尾に「要差し替え候補（error）」と「参考（empty）」が分かれて出る
-   - empty は「過去14日に新着なし」で、更新頻度の低いブログなら正常。対応不要
-   - error が残ったソースは、(a) 正しいフィード URL が分かれば `config/sources.yaml` を直す、
-     (b) RSS が無ければ `kind: gnews` の `site:ドメイン` 検索に切り替える、(c) どちらも無理なら yaml から外す。
-     前回（PR #3 より前）は error 37件。#3 でフィードの自動発見と取得上限 12MB を入れたので大半は解消する見込み
-3. **収集の試運転**: `npm run daily -- collect --dry`
-   - 見る行: `[x] …`、`[error] …`、最後の `完了 …`
-4. **本番と同じ実行**: `npm run daily`
+1. **X リスト URL を `/admin/profile` で保存する**（上限も一緒に保存される）。保存後に `npm run daily -- collect --dry` で `[x]` 行を確認
+   （dry でも X API は呼ばれ課金される。メンバー対応表は dry でも保存するので、直後の本番で再取得はしない）
+2. **本番と同じ実行**: `npm run daily`
    - メールが届く／`/admin/daily` に10件並ぶ／`daily_runs` に記録が入る、を確認
-5. **launchd 登録**: `ops/macmini/README.md` の手順7。登録後 `launchctl kickstart` で1回試運転し、ログ（`~/Library/Logs/ha-ma-daily/daily.log`）を確認
-6. 結果を濵屋さんに報告（件数、失敗ソース、AI 費用と X の推定額）
+3. **launchd 登録**: `ops/macmini/README.md` の手順7。登録後 `launchctl kickstart` で1回試運転し、ログ（`~/Library/Logs/ha-ma-daily/daily.log`）を確認
+4. 結果を濵屋さんに報告（件数、失敗ソース、AI 費用と X の推定額）
 
 ## X（公式 API）について — 重要
 

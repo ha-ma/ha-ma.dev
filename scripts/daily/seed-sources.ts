@@ -54,6 +54,15 @@ export async function seedSources(db: Db, file: string, log: (m: string) => void
   const { error } = await db.from("sources").upsert(rows, { onConflict: "id" });
   if (error) throw new Error(`sources の投入に失敗: ${error.message}`);
   log(`sources: ${rows.length} 件を投入（${file}）`);
+  // yaml から外したソースは無効化する（行は消さない: 過去の記事が参照しているため）
+  const ids = new Set(rows.map((r) => r.id));
+  const { data: enabled } = await db.from("sources").select("id").eq("enabled", true);
+  const removed = (enabled ?? []).map((e) => e.id).filter((id) => !ids.has(id));
+  if (removed.length) {
+    const { error: e2 } = await db.from("sources").update({ enabled: false }).in("id", removed);
+    if (e2) throw new Error(`yaml に無いソースの無効化に失敗: ${e2.message}`);
+    log(`yaml に無いため無効化: ${removed.join(", ")}`);
+  }
   const kinds = rows.reduce<Record<string, number>>((a, r) => ((a[r.kind] = (a[r.kind] ?? 0) + 1), a), {});
   log(JSON.stringify(kinds));
 }

@@ -5,7 +5,7 @@ import { pageAdapter } from "@/lib/daily/adapters/page";
 import { fetchText, pool, type Db } from "@/lib/daily/common";
 
 export async function validateSources(db: Db, opts: { only?: string; log: (m: string) => void }) {
-  let q = db.from("sources").select("*").order("group_name").order("id");
+  let q = db.from("sources").select("*").eq("enabled", true).order("group_name").order("id");
   if (opts.only) q = q.eq("kind", opts.only as Source["kind"]);
   const { data, error } = await q;
   if (error) throw new Error(error.message);
