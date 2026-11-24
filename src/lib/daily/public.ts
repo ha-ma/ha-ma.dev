@@ -57,28 +57,29 @@ export async function getDailyDay(date: string): Promise<PublicDay | null> {
     const supabase = createPublicClient();
     const { data, error } = await supabase
       .from("comments")
-      .select("public_text, tags, published_at, updated_at, daily_items!inner(id, title, url, author, summary, tags, rank, published_at, sources(name, url))")
+      .select("public_text, tags, published_at, updated_at, daily_items!inner(id, title, url, author, summary, tags, rank, published_at, sources(name, url, kind))")
       .eq("run_date", date)
       .not("public_text", "is", null)
       .order("published_at", { ascending: true });
     if (error) throw error;
     type Row = Pick<Comment, "public_text" | "tags" | "published_at" | "updated_at"> & {
-      daily_items: Pick<DailyItem, "id" | "title" | "url" | "author" | "summary" | "tags" | "rank" | "published_at"> & { sources: { name: string; url: string | null } | null };
+      daily_items: Pick<DailyItem, "id" | "title" | "url" | "author" | "summary" | "tags" | "rank" | "published_at"> & { sources: { name: string; url: string | null; kind?: string } | null };
     };
     const rows = (data ?? []) as unknown as Row[];
     if (!rows.length) return null;
     const entries: PublicEntry[] = rows.map((r) => ({
       item: {
         id: r.daily_items.id,
-        title: r.daily_items.title,
+        // X の投稿は本文を載せない（リンクと投稿者名のみ）。リンク先が外部記事でも見出しは投稿文なので置き換える
+        title: r.daily_items.sources?.kind === "x" ? `${r.daily_items.author ?? r.daily_items.sources?.name ?? "X"} の投稿` : r.daily_items.title,
         url: r.daily_items.url,
         author: r.daily_items.author,
-        summary: r.daily_items.summary,
+        summary: r.daily_items.sources?.kind === "x" ? null : r.daily_items.summary,
         tags: r.daily_items.tags,
         rank: r.daily_items.rank,
         published_at: r.daily_items.published_at,
       },
-      source: r.daily_items.sources,
+      source: r.daily_items.sources ? { name: r.daily_items.sources.name, url: r.daily_items.sources.url } : null,
       comment: { public_text: r.public_text, tags: r.tags, published_at: r.published_at, updated_at: r.updated_at },
     }));
     const updatedAt =

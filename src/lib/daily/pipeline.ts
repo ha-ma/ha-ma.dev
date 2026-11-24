@@ -47,6 +47,7 @@ export async function runPipeline(opts: PipelineOptions) {
   if (stages.has("digest")) result.digest = await digest({ db: opts.db, runDate, log, dryRun: opts.dryRun });
   if (stages.has("mail")) result.mail = await sendDigestMail({ db: opts.db, runDate, log, dryRun: opts.dryRun, degraded: opts.mode === "degraded", note: opts.note });
   if (!opts.dryRun) {
+    await purgeOldXItems(opts.db, log);
     await recordStage(opts.db, runDate, "pipeline", { finished_at: new Date().toISOString(), mode: opts.mode });
     await revalidateSite(log);
   }
@@ -63,5 +64,29 @@ export async function revalidateSite(log: Logger = () => {}) {
     log(`[revalidate] ${res.status}`);
   } catch (e) {
     log(`[revalidate] 失敗: ${e instanceof Error ? e.message : e}`);
+  }
+}
+
+/**
+ * X 由来のデータは 90 日で消す（X の開発者ポリシーへの申告どおり）。
+ * コメントの付いていない項目は行ごと削除し、コメント付きの項目は抜粋・本文・要約だけを空にする。
+ */
+export async function purgeOldXItems(db: Db, log: Logger = () => {}) {
+  try {
+    const { data: xs } = await db.from("sources").select("id").eq("kind", "x");
+    const ids = (xs ?? []).map((s) => s.id);
+    if (!ids.length) return;
+    const cutoff = new Date(Date.now() - 90 * 24 * 3600e3).toISOString();
+    const { data: old } = await db.from("daily_items").select("id").in("source_id", ids).lt("fetched_at", cutoff).limit(2000);
+    const oldIds = (old ?? []).map((r) => r.id);
+    if (!oldIds.length) return;
+    const { data: commented } = await db.from("comments").select("item_id").in("item_id", oldIds);
+    const keep = new Set((commented ?? []).map((c) => c.item_id));
+    const del = oldIds.filter((id) => !keep.has(id));
+    if (del.length) await db.from("daily_items").delete().in("id", del);
+    if (keep.size) await db.from("daily_items").update({ excerpt: "", body: null, summary: null, angle: null }).in("id", Array.from(keep));
+    log(`[x] 90日を過ぎた X 由来の項目を整理（削除 ${del.length}・本文消去 ${keep.size}）`);
+  } catch (e) {
+    log(`[x] 古い項目の整理に失敗: ${e instanceof Error ? e.message : e}`);
   }
 }
